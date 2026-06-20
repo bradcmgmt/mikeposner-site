@@ -92,7 +92,7 @@
   header.scrolled a.nav-cta.btn-solid:hover{color:#fff}
   header.scrolled a.nav-cta.btn-solid{background:var(--accent);border-color:transparent}
   header.scrolled a.nav-cta.btn-solid:hover{background:var(--accent-deep)}
-  header:not(.scrolled) .nav-cta.btn-solid{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.65);backdrop-filter:blur(6px)}
+  header:not(.scrolled) .nav-cta.btn-solid{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.65);backdrop-filter:blur(6px);box-shadow:none}
   .menu-btn{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
   header.scrolled .menu-btn{color:var(--ink)}
   .menu-btn svg{width:28px;height:28px}
@@ -354,7 +354,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="#top">Home</a>
       <a href="#tours">Tours</a>
-      <a href="#music">Music</a>
+      <a href="https://mikeposner.lnk.to/IWBTI?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">Music</a>
       <a href="#message">Book Mike</a>
       <a href="#adventure">Adventure</a>
       <a href="#story">About</a>
@@ -370,7 +370,7 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-media">
-    <video autoplay muted loop playsinline preload="auto" referrerpolicy="no-referrer"
+    <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline="true" preload="auto" disablepictureinpicture
            poster="assets/media/home-hero-poster.jpg"
            aria-label="Mike Posner performing live">
       <source src="assets/media/home-hero.mp4" type="video/mp4">
@@ -450,7 +450,7 @@
   <div class="wrap">
     <div class="big"><small>Over</small>17 Billion</div>
     <p>Streams to date — and millions of podcast listeners who followed his Walk and Everest climb in real time.</p>
-    <a href="#music" class="btn btn-ghost-white">Learn More</a>
+    <a href="https://www.instagram.com/mikeposner/?hl=en" target="_blank" rel="noopener" class="btn btn-ghost-white">Learn More</a>
   </div>
 </section>
 
@@ -464,7 +464,7 @@
       <p>His keynote is a dynamic experience that blends motivational speaking, live music, and interactive audience moments — built to move the room.</p>
       <div class="cta-row">
         <a href="#contact" class="btn btn-solid">Book Mike to Speak</a>
-        <a href="#contact" class="btn btn-outline">Highlighted Events</a>
+        <a href="#tours" class="btn btn-outline">Highlighted Events</a>
       </div>
     </div>
     <div class="message-visual reveal">
@@ -570,7 +570,7 @@
           <h5>Sitemap</h5>
           <a href="#top">Home</a>
           <a href="#tours">Live</a>
-          <a href="#music">Music</a>
+          <a href="https://mikeposner.lnk.to/IWBTI?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">Music</a>
           <a href="#adventure">Adventure</a>
           <a href="#story">About</a>
         </div>
@@ -637,6 +637,23 @@
           btn.disabled = false; btn.textContent = label;
           if(err){ err.textContent = "Hmm, that didn't go through — please try again."; err.classList.add('show'); }
         });
+    });
+  })();
+
+  // hero video — nudge autoplay on mobile (iOS sometimes won't start it on its own)
+  (function(){
+    var v = document.getElementById('heroVideo');
+    if(!v) return;
+    v.muted = true; v.defaultMuted = true;            // muted must be set for autoplay
+    v.setAttribute('muted','');
+    function tryPlay(){ try{ var p = v.play(); if(p && p.catch) p.catch(function(){}); }catch(e){} }
+    tryPlay();
+    v.addEventListener('loadeddata', tryPlay);
+    v.addEventListener('canplay', tryPlay);
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) tryPlay(); });
+    // if autoplay was blocked, start it on the first interaction
+    ['touchstart','pointerdown','click','scroll'].forEach(function(evt){
+      window.addEventListener(evt, function handler(){ tryPlay(); if(!v.paused){ window.removeEventListener(evt, handler); } }, {passive:true});
     });
   })();
 
