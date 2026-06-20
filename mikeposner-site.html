@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mike Posner — Grammy-Nominated Artist, Speaker & Adventurer</title>
+<meta name="description" content="Mike Posner is a Grammy-nominated artist, speaker, and adventurer on a mission to uplift and transform. Music, tours, keynotes, and the journey on foot.">
+<link rel="icon" type="image/png" href="assets/mp-icon-circ-blk.png">
+<link rel="apple-touch-icon" href="assets/mp-icon-circ-blk.png">
+<meta name="theme-color" content="#0a0a0f">
+<meta property="og:title" content="Mike Posner — Artist · Speaker · Adventurer">
+<meta property="og:description" content="Grammy-nominated artist, speaker, and adventurer on a mission to uplift and transform.">
+<meta property="og:image" content="https://mikeposner.com/home/home-hero-poster.jpg">
+<style>
+  /* ===== BRAND FONTS (self-hosted) ===== */
+  /* VC Garamond Condensed — display / headings */
+  @font-face{font-family:'VC Garamond Condensed';src:url('assets/fonts/VCGaramondCondensed-Regular.otf') format('opentype');font-weight:300 400;font-style:normal;font-display:swap}
+  @font-face{font-family:'VC Garamond Condensed';src:url('assets/fonts/VCGaramondCondensed-Medium.otf') format('opentype');font-weight:500 700;font-style:normal;font-display:swap}
+  /* Metropolis — body / UI (Proxima-style geometric sans) */
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/Metropolis-Black.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:swap}
+  :root{
+    --ink:#1d2433;
+    --ink-soft:#5a6678;
+    --sky:#aebbe0;        /* periwinkle */
+    --sky-2:#cdd6ef;
+    --sky-3:#e7ecf8;
+    --paper:#f4f6fc;
+    --white:#ffffff;
+    --accent:#3a5bd9;     /* refined blue */
+    --accent-deep:#22357f;
+    --line:rgba(29,36,51,.12);
+    --shadow:0 24px 60px -24px rgba(34,53,127,.35);
+    --max:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Metropolis',system-ui,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .serif{font-family:'VC Garamond Condensed',Georgia,serif}
+  h1,h2,h3,h4{font-family:'VC Garamond Condensed',Georgia,serif;font-weight:600;line-height:1.04;letter-spacing:-.012em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 28px}
+  section{position:relative}
+  .eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);font-weight:600}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:100px;
+    font-weight:600;font-size:.92rem;letter-spacing:.02em;cursor:pointer;border:1.5px solid transparent;
+    transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease,border-color .25s ease}
+  .btn-solid{background:var(--accent);color:#fff;box-shadow:0 12px 30px -10px rgba(58,91,217,.7)}
+  .btn-solid:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(58,91,217,.75);background:var(--accent-deep)}
+  .btn-outline{border-color:currentColor;color:var(--ink);background:transparent}
+  .btn-outline:hover{background:var(--ink);color:#fff;transform:translateY(-3px)}
+  .btn-ghost-white{border-color:rgba(255,255,255,.7);color:#fff;background:rgba(255,255,255,.04);backdrop-filter:blur(4px)}
+  .btn-ghost-white:hover{background:#fff;color:var(--ink);transform:translateY(-3px)}
+  .btn-white{background:#fff;color:var(--ink);border-color:#fff;box-shadow:0 12px 30px -12px rgba(0,0,0,.45)}
+  .btn-white:hover{background:transparent;color:#fff;border-color:rgba(255,255,255,.8);transform:translateY(-3px)}
+
+  /* NAV */
+  header{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .35s ease,backdrop-filter .35s,box-shadow .35s,border-color .35s;border-bottom:1px solid transparent}
+  header.scrolled{background:rgba(244,246,252,.86);backdrop-filter:blur(16px);box-shadow:0 6px 24px -18px rgba(34,53,127,.5);border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;gap:20px;height:80px;transition:height .35s}
+  header.scrolled .nav{height:66px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand-badge{height:38px;width:38px;transition:height .35s,width .35s}
+  header.scrolled .brand-badge{height:33px;width:33px}
+  .brand-script{height:26px;width:auto;transition:height .35s}
+  header.scrolled .brand-script{height:23px}
+  .brand-light{display:block}
+  .brand-dark{display:none}
+  header.scrolled .brand-light{display:none}
+  header.scrolled .brand-dark{display:block}
+  .nav-links{display:flex;align-items:center;gap:30px;flex:1 1 auto;justify-content:center}
+  .nav-links a{font-size:.92rem;font-weight:500;color:rgba(255,255,255,.92);transition:color .25s;position:relative}
+  .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:currentColor;transition:width .25s}
+  .nav-links a:not(.btn):hover::after{width:100%}
+  header.scrolled .nav-links a{color:var(--ink-soft)}
+  header.scrolled .nav-links a:hover{color:var(--ink)}
+  .nav-cta{padding:10px 22px;font-size:.85rem;flex:0 0 auto}
+  /* keep the solid pill button readable in every state (white text on blue) */
+  header a.nav-cta.btn-solid,
+  header.scrolled a.nav-cta.btn-solid,
+  header.scrolled a.nav-cta.btn-solid:hover{color:#fff}
+  header.scrolled a.nav-cta.btn-solid{background:var(--accent);border-color:transparent}
+  header.scrolled a.nav-cta.btn-solid:hover{background:var(--accent-deep)}
+  header:not(.scrolled) .nav-cta.btn-solid{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.65);backdrop-filter:blur(6px)}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
+  header.scrolled .menu-btn{color:var(--ink)}
+  .menu-btn svg{width:28px;height:28px}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+  .hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center 42%;transform:scale(1.16)}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,20,45,.35) 0%,rgba(10,20,45,.05) 35%,rgba(10,20,45,.15) 75%,rgba(231,236,248,.95) 100%)}
+  .hero-inner{position:relative;z-index:2;padding-top:80px;display:flex;flex-direction:column;align-items:center;gap:34px}
+  .hero-logo{width:min(540px,80vw);filter:drop-shadow(0 8px 30px rgba(0,0,0,.45))}
+  .hero-tag{color:rgba(255,255,255,.92);font-size:clamp(1rem,2.2vw,1.35rem);font-weight:400;letter-spacing:.04em;text-shadow:0 2px 18px rgba(0,0,0,.4)}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+  /* NEWSLETTER MODAL (in-page; hero video keeps looping behind it) */
+  .nl-modal{position:fixed;inset:0;z-index:9998;display:grid;place-items:center;padding:24px;
+    opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+  .nl-modal.open{opacity:1;visibility:visible}
+  .nl-backdrop{position:absolute;inset:0;background:rgba(10,18,40,.30);backdrop-filter:blur(2px);cursor:pointer}
+  .nl-card{position:relative;z-index:1;width:min(440px,100%);background:rgba(255,255,255,.98);
+    border-radius:22px;padding:42px 34px 32px;text-align:center;
+    box-shadow:0 44px 110px -34px rgba(10,18,40,.75);
+    transform:translateY(16px) scale(.97);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .nl-modal.open .nl-card{transform:none}
+  .nl-close{position:absolute;top:12px;right:14px;width:34px;height:34px;border:0;border-radius:50%;
+    background:transparent;color:var(--ink-soft);font-size:1.5rem;line-height:1;cursor:pointer;transition:background .2s,color .2s}
+  .nl-close:hover{background:rgba(0,0,0,.06);color:var(--ink)}
+  .nl-badge{width:56px;height:56px;border-radius:50%;margin:0 auto 16px}
+  .nl-card h3{font-size:2rem;margin-bottom:8px}
+  .nl-card>p{color:var(--ink-soft);font-size:1rem;margin-bottom:24px;max-width:34ch;margin-left:auto;margin-right:auto}
+  .nl-card form{display:flex;gap:10px;flex-wrap:wrap}
+  .nl-card input{flex:1;min-width:0;padding:14px 20px;border-radius:100px;border:1.5px solid var(--line);
+    background:var(--paper);color:var(--ink);font-family:inherit;font-size:1rem}
+  .nl-card input:focus{outline:none;border-color:var(--accent);background:#fff}
+  .nl-card form .btn{padding:14px 26px}
+  .nl-error{display:none;margin-top:10px;color:#c0392b;font-size:.9rem;font-weight:500}
+  .nl-error.show{display:block}
+  .nl-success{display:none;margin-top:4px;color:var(--accent-deep);font-weight:600}
+  .nl-card.done form{display:none}
+  .nl-card.done .nl-success{display:block}
+  @media(max-width:440px){.nl-card form{flex-direction:column}.nl-card form .btn{justify-content:center}}
+  .scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.85);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,9px)}}
+
+  /* SECTION SHELL */
+  .band{padding:clamp(72px,10vw,140px) 0}
+
+  /* STORY */
+  .story{background:linear-gradient(180deg,#94a6d6 0%,#b3c0e8 38%,#e3e9f7 100%)}
+  .display-head{font-size:clamp(3rem,11vw,8.5rem);line-height:.92;color:var(--white);letter-spacing:-.02em;text-shadow:0 8px 36px rgba(28,40,80,.35)}
+  .display-head .l2{display:block;color:var(--accent-deep);text-shadow:none}
+  .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;margin-top:54px}
+  .story-copy p{color:var(--ink-soft);font-size:1.08rem;margin-bottom:20px;max-width:54ch}
+  .story-copy p.lead{color:var(--ink);font-size:1.3rem;line-height:1.5;font-weight:500}
+  .story-photos{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .photo-card{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:3/4;position:relative;background:var(--sky)}
+  .photo-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .photo-card:hover img{transform:scale(1.06)}
+  .photo-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(transparent,rgba(15,23,50,.82));color:#fff;font-size:.82rem;font-weight:500;letter-spacing:.02em}
+  .photo-card.tall{grid-row:span 2;aspect-ratio:auto}
+  .roles{display:flex;flex-wrap:wrap;gap:14px;margin:46px 0 30px;justify-content:center}
+  .role{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.7);border:1px solid var(--line);padding:12px 22px;border-radius:100px;font-weight:600;font-size:.95rem;letter-spacing:.04em;color:var(--accent-deep);box-shadow:0 8px 24px -16px rgba(34,53,127,.5)}
+  .role .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .center{text-align:center}
+
+  /* STREAMS BAND */
+  .streams{background:linear-gradient(135deg,var(--accent-deep),var(--accent));color:#fff;text-align:center;overflow:hidden}
+  .streams .wrap{position:relative;z-index:1}
+  .streams .big{font-size:clamp(3rem,12vw,9rem);line-height:1;font-weight:700;letter-spacing:-.02em}
+  .streams .big small{font-family:'Metropolis',sans-serif;font-weight:600;font-size:.16em;letter-spacing:.3em;display:block;text-transform:uppercase;opacity:.85;margin-bottom:14px}
+  .streams p{opacity:.9;font-size:1.05rem;margin:18px auto 30px;max-width:46ch}
+  .streams::before,.streams::after{content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:.5}
+  .streams::before{width:340px;height:340px;background:#7ea0ff;top:-120px;left:-60px}
+  .streams::after{width:300px;height:300px;background:#9d6cff;bottom:-120px;right:-40px}
+
+  /* MESSAGE / SPEAKING */
+  .message{background:var(--paper)}
+  .message-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .message h2{font-size:clamp(2.2rem,5vw,3.6rem);margin:14px 0 22px}
+  .message p{color:var(--ink-soft);font-size:1.08rem;margin-bottom:18px}
+  .message-visual{border-radius:24px;overflow:hidden;box-shadow:var(--shadow);position:relative;aspect-ratio:4/3}
+  .message-visual img{width:100%;height:100%;object-fit:cover}
+  .message-visual .badge{position:absolute;left:20px;bottom:20px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);padding:12px 20px;border-radius:14px;font-weight:600;color:var(--accent-deep);font-size:.9rem;box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+
+  /* TOURS */
+  .tours{background:linear-gradient(180deg,var(--sky-2),var(--sky-3))}
+  .tours-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:14px}
+  .tour-list{border-top:1px solid var(--line);margin-top:26px}
+  .tours-head h2{font-size:clamp(2.4rem,6vw,4.2rem)}
+  .tours-head p{color:var(--ink-soft);letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;font-weight:600}
+  .tour-tabs{display:flex;gap:8px;margin:26px 0 12px;border-bottom:1px solid var(--line)}
+  .tour-tabs button{background:none;border:0;padding:12px 6px;margin-right:18px;font-family:inherit;font-size:.95rem;font-weight:600;color:var(--ink-soft);cursor:pointer;position:relative;transition:color .2s}
+  .tour-tabs button.active{color:var(--accent-deep)}
+  .tour-tabs button.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--accent)}
+  .show{display:grid;grid-template-columns:150px 1fr auto;gap:30px;align-items:center;padding:24px 14px;border-bottom:1px solid var(--line);transition:background .3s,padding-left .3s,border-radius .3s}
+  .show:hover{background:rgba(255,255,255,.6);padding-left:24px;border-radius:14px}
+  .show .date{font-family:'VC Garamond Condensed',Georgia,serif}
+  .show .date .d{font-size:1.45rem;line-height:1;display:block;color:var(--ink)}
+  .show .date .city{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Metropolis',sans-serif;margin-top:4px}
+  .show .venue{font-size:1.04rem;font-weight:500;color:var(--ink)}
+  .show .actions{display:flex;gap:10px}
+  .show .actions .btn{padding:11px 24px;font-size:.82rem}
+  .pill-link{padding:11px 24px;border-radius:100px;border:1.5px solid var(--line);font-weight:600;font-size:.82rem;color:var(--ink);transition:all .25s}
+  .pill-link:hover{border-color:var(--accent);color:var(--accent);background:#fff}
+  .tours-foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:36px;padding-top:30px;border-top:1px solid var(--line)}
+  .tours-foot span{font-weight:600;color:var(--ink)}
+  .tour-status{padding:46px 8px;text-align:center;color:var(--ink-soft);font-size:1.02rem}
+  .tour-status a{color:var(--accent);font-weight:600}
+  .tour-status.loading{opacity:.7}
+  .show .actions .btn-soldout{background:var(--ink-soft);border-color:var(--ink-soft);color:#fff;cursor:default;pointer-events:none;opacity:.85}
+  .bit-credit{display:inline-block;margin-top:22px;font-size:.78rem;letter-spacing:.04em;color:var(--ink-soft);opacity:.7;transition:opacity .2s,color .2s}
+  .bit-credit:hover{opacity:1;color:var(--accent)}
+  @media(max-width:680px){
+    .show{grid-template-columns:1fr;gap:12px;text-align:left}
+    .show .actions{flex-wrap:wrap}
+    .show .actions .btn,.show .actions .pill-link{flex:1;justify-content:center;text-align:center}
+  }
+
+  /* QUOTE */
+  .quote{background:var(--accent-deep);color:#fff;text-align:center;position:relative;overflow:hidden}
+  .quote .wrap{position:relative;z-index:1}
+  .quote .watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(420px,60vw);opacity:.06;z-index:0;pointer-events:none}
+  .quote blockquote{font-family:'VC Garamond Condensed',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(1.9rem,5vw,3.4rem);line-height:1.18;max-width:18ch;margin:0 auto 22px}
+  .quote cite{font-style:normal;letter-spacing:.18em;text-transform:uppercase;font-size:.82rem;opacity:.8;font-weight:600}
+
+  /* ADVENTURE */
+  .adventure{background:var(--paper)}
+  .adv-head{text-align:center;max-width:60ch;margin:0 auto 56px}
+  .adv-head h2{font-size:clamp(2.4rem,6vw,4.2rem);margin-bottom:18px}
+  .adv-head p{color:var(--ink-soft);font-size:1.08rem}
+  .adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .adv-card{position:relative;border-radius:22px;overflow:hidden;min-height:440px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;box-shadow:var(--shadow)}
+  .adv-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .adv-card:hover img{transform:scale(1.07)}
+  .adv-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,23,50,.05) 30%,rgba(15,23,50,.85) 100%)}
+  .adv-card .body{position:relative;z-index:2;padding:28px}
+  .adv-card .yr{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;opacity:.9;margin-bottom:8px}
+  .adv-card h3{font-size:1.5rem;line-height:1.1}
+  .adv-card .tagline{margin-top:8px;font-size:.92rem;opacity:.9}
+
+  /* CONTACT */
+  .contact{background:linear-gradient(180deg,var(--sky-3),var(--sky-2));text-align:center}
+  .contact .inner{max-width:640px;margin:0 auto}
+  .contact h2{font-size:clamp(2.2rem,5.5vw,3.6rem);margin-bottom:18px}
+  .contact p{color:var(--ink-soft);font-size:1.08rem;margin-bottom:30px}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:rgba(255,255,255,.72);padding:64px 0 36px}
+  .foot-grid{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;margin-bottom:44px}
+  .foot-script{height:34px;width:auto;display:block;margin-bottom:18px}
+  .foot-brand p{max-width:36ch;font-size:.95rem}
+  .socials{display:flex;gap:12px;margin-top:22px}
+  .socials a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;color:#fff;transition:all .25s}
+  .socials a:hover{background:#fff;color:var(--ink);transform:translateY(-3px)}
+  .socials svg{width:18px;height:18px;fill:currentColor}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+  .foot-col h5{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px}
+  .foot-col a{display:block;color:rgba(255,255,255,.82);font-size:.96rem;margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.84rem;color:rgba(255,255,255,.5)}
+
+  /* ===== INTRO PRELOADER (light, blue-hued) ===== */
+  #preloader{
+    position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;
+    background:#eef2fc;
+    animation:plFade .55s ease 1.5s forwards;
+  }
+  /* near-white, blue-hued base that gently shifts */
+  #preloader .pl-bg{
+    position:absolute;inset:-20%;
+    background:linear-gradient(135deg,#f8faff 0%,#e6ecfb 36%,#f1f4fe 64%,#e8edfc 100%);
+    background-size:240% 240%;
+    animation:plGradient 5s ease-in-out infinite;
+  }
+  /* drifting soft blue orbs — subtle texture + movement */
+  #preloader .pl-orb{position:absolute;border-radius:50%;filter:blur(60px);mix-blend-mode:multiply}
+  #preloader .pl-orb.o1{width:340px;height:340px;background:rgba(150,176,255,.45);left:10%;top:14%;animation:plDrift1 7s ease-in-out infinite}
+  #preloader .pl-orb.o2{width:300px;height:300px;background:rgba(178,198,255,.42);right:10%;bottom:13%;animation:plDrift2 8.5s ease-in-out infinite}
+  #preloader .pl-orb.o3{width:220px;height:220px;background:rgba(120,150,245,.30);right:26%;top:20%;animation:plDrift1 9.5s ease-in-out infinite reverse}
+  /* faint grain */
+  #preloader .pl-grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  /* stage */
+  #preloader .pl-stage{position:relative;display:grid;place-items:center;width:230px;height:230px}
+  /* soft pulsing halo + ring behind the badge (gentle motion) */
+  #preloader .pl-halo{position:absolute;inset:0;margin:auto;width:190px;height:190px;border-radius:50%;
+    background:radial-gradient(circle,rgba(58,91,217,.20),transparent 70%);animation:plPulse 2.6s ease-in-out infinite}
+  #preloader .pl-ring{position:absolute;inset:0;margin:auto;width:176px;height:176px;border-radius:50%;
+    border:1.5px solid rgba(58,91,217,.20);animation:plPulse 2.6s ease-in-out infinite .35s}
+  /* blue circle badge w/ white MP monogram — same mark as the header, rotates slightly */
+  #preloader .pl-badge{position:relative;width:142px;height:142px;border-radius:50%;
+    background:radial-gradient(circle at 33% 27%,#5774e8 0%,#3a5bd9 46%,#27409e 100%);
+    box-shadow:0 20px 52px -14px rgba(34,53,127,.55),inset 0 2px 12px rgba(255,255,255,.20);
+    display:grid;place-items:center;
+    animation:plBadge 1.5s cubic-bezier(.33,.12,.22,1) forwards;}
+  #preloader .pl-badge .pl-mp{width:58%;height:58%;object-fit:contain;filter:drop-shadow(0 2px 7px rgba(0,0,0,.22))}
+  @keyframes plFade{to{opacity:0;visibility:hidden;pointer-events:none}}
+  @keyframes plGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  @keyframes plDrift1{0%,100%{transform:translate(0,0)}50%{transform:translate(36px,26px)}}
+  @keyframes plDrift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-32px,-24px)}}
+  @keyframes plPulse{0%,100%{transform:scale(.9);opacity:.45}50%{transform:scale(1.06);opacity:.85}}
+  @keyframes plBadge{0%{opacity:0;transform:scale(.78) rotate(-13deg)}45%{opacity:1}100%{opacity:1;transform:scale(1) rotate(9deg)}}
+  body.pl-lock{overflow:hidden}
+  @media(prefers-reduced-motion:reduce){
+    #preloader .pl-orb,#preloader .pl-halo,#preloader .pl-ring{animation:none}
+    #preloader .pl-badge{animation:plBadgeRM .6s ease forwards}
+    @keyframes plBadgeRM{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+  }
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* responsive */
+  @media(max-width:920px){
+    .story-grid,.message-grid{grid-template-columns:1fr;gap:40px}
+    .adv-grid{grid-template-columns:1fr;gap:20px}
+    .adv-card{min-height:360px}
+  }
+  @media(max-width:760px){
+    .nav{justify-content:space-between}
+    .nav-cta{display:none}
+    .nav-links{position:fixed;inset:80px 0 auto 0;flex:0 1 auto;flex-direction:column;gap:0;background:rgba(244,246,252,.98);backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line);padding:8px 0;transform:translateY(-130%);transition:transform .35s ease;pointer-events:none}
+    .nav-links.open{transform:none;pointer-events:auto}
+    .nav-links a{width:100%;padding:16px 28px;color:var(--ink-soft)!important;border-bottom:1px solid var(--line)}
+    .nav-links a:not(.btn)::after{display:none}
+    .nav-links .btn{margin:14px 28px;width:calc(100% - 56px);justify-content:center;background:var(--accent)!important;color:#fff!important;border-color:transparent!important}
+    .menu-btn{display:block}
+    .story-photos{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body class="pl-lock">
+
+<!-- INTRO PRELOADER -->
+<div id="preloader" aria-hidden="true">
+  <div class="pl-bg"></div>
+  <div class="pl-orb o1"></div>
+  <div class="pl-orb o2"></div>
+  <div class="pl-orb o3"></div>
+  <div class="pl-grain"></div>
+  <div class="pl-stage">
+    <div class="pl-halo"></div>
+    <div class="pl-ring"></div>
+    <div class="pl-badge"><img class="pl-mp" src="assets/mp-icon-wht.png" alt="Mike Posner"></div>
+  </div>
+</div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Mike Posner home">
+      <img class="brand-badge brand-light" src="assets/mp-icon-circ-wht.png" alt="">
+      <img class="brand-badge brand-dark" src="assets/mp-icon-circ-blk.png" alt="">
+      <img class="brand-script brand-light" src="assets/mp-logo-script-wht.png" alt="Mike Posner">
+      <img class="brand-script brand-dark" src="assets/mp-logo-script-blk.png" alt="Mike Posner">
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#top">Home</a>
+      <a href="#tours">Tours</a>
+      <a href="#music">Music</a>
+      <a href="#message">Book Mike</a>
+      <a href="#adventure">Adventure</a>
+      <a href="#story">About</a>
+      <a href="https://mike-posner.myshopify.com/" target="_blank" rel="noopener">Shop</a>
+    </nav>
+    <a href="#contact" class="btn btn-solid nav-cta">Book Mike</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-media">
+    <video autoplay muted loop playsinline preload="auto" referrerpolicy="no-referrer"
+           poster="https://mikeposner.com/home/home-hero-poster.jpg"
+           aria-label="Mike Posner performing live">
+      <source src="https://mikeposner.com/home/home-hero.mp4" type="video/mp4">
+      <img src="https://mikeposner.com/home/home-hero-poster.jpg" alt="Mike Posner performing live" referrerpolicy="no-referrer">
+    </video>
+  </div>
+  <div class="hero-inner wrap">
+    <img class="hero-logo" src="assets/mp-logo-script-wht.png" alt="Mike Posner">
+    <p class="hero-tag">Grammy-nominated artist · speaker · adventurer</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-ghost-white">Book Mike</a>
+      <button type="button" class="btn btn-white" id="newsletterOpen">Get Updates</button>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- NEWSLETTER MODAL -->
+<div class="nl-modal" id="nlModal" aria-hidden="true">
+  <div class="nl-backdrop" data-nl-close></div>
+  <div class="nl-card" role="dialog" aria-modal="true" aria-labelledby="nlTitle">
+    <button class="nl-close" type="button" data-nl-close aria-label="Close">&times;</button>
+    <img class="nl-badge" src="assets/mp-icon-circ-blk.png" alt="" aria-hidden="true">
+    <h3 id="nlTitle" class="serif">Stay in the loop</h3>
+    <p>New music, tour dates, and dispatches from the trail — straight to your inbox.</p>
+    <form id="nlForm" novalidate>
+      <input type="email" id="nlEmail" required placeholder="you@email.com" autocomplete="email" aria-label="Email address">
+      <button type="submit" class="btn btn-solid">Subscribe</button>
+    </form>
+    <p class="nl-error" id="nlError" role="alert"></p>
+    <p class="nl-success" id="nlSuccess">Almost there! Check your inbox to confirm your subscription. 🎵</p>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="band story" id="story">
+  <div class="wrap">
+    <div class="center reveal">
+      <h2 class="display-head">NOT YOUR<span class="l2">TYPICAL ARTIST</span></h2>
+    </div>
+    <div class="story-grid">
+      <div class="story-copy reveal">
+        <p class="lead">Mike's story is one of continual evolution: from chart-topping pop star, to grieving son on a soul-searching walk, to the mountaintop (literally), and onward into a life of service and self-discovery.</p>
+        <p>Mike Posner's career has never followed the rules. He's written some of the most ubiquitous songs of the past decade, collaborated with everyone from Justin Bieber to Lil Wayne to Avicii, walked 2,800 miles across America, and summited Mount Everest.</p>
+        <p>For years, millions have watched him repeatedly risk failure and physical danger in pursuit of something deep and true. What emerged is someone who not only commands a wide, multi-generational audience, but who actually makes a difference in their lives.</p>
+      </div>
+      <div class="story-photos reveal">
+        <figure class="photo-card tall">
+          <img src="https://mikeposner.com/home/img/mask-group.png" alt="Mike Posner performing live" referrerpolicy="no-referrer">
+          <figcaption>Live in concert</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="https://mikeposner.com/home/img/mask-group-1.png" alt="Mike Posner summits Mount Everest" referrerpolicy="no-referrer">
+          <figcaption>Summiting Everest</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="https://mikeposner.com/home/img/mask-group-2.png" alt="Mike Posner on stage" referrerpolicy="no-referrer">
+          <figcaption>On stage</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="roles reveal">
+      <span class="role"><span class="dot"></span>Musician</span>
+      <span class="role"><span class="dot"></span>Endurance Athlete</span>
+      <span class="role"><span class="dot"></span>Spiritual Teacher</span>
+    </div>
+    <div class="center reveal">
+      <a href="#adventure" class="btn btn-outline">See Mike's Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- STREAMS -->
+<section class="band streams reveal">
+  <div class="wrap">
+    <div class="big"><small>Over</small>17 Billion</div>
+    <p>Streams to date — and millions of podcast listeners who followed his Walk and Everest climb in real time.</p>
+    <a href="#music" class="btn btn-ghost-white">Learn More</a>
+  </div>
+</section>
+
+<!-- MESSAGE / SPEAKING -->
+<section class="band message" id="message">
+  <div class="wrap message-grid">
+    <div class="reveal">
+      <p class="eyebrow">Where Music Meets Message</p>
+      <h2>A keynote you feel, not just hear.</h2>
+      <p>Mike Posner is a Grammy-nominated artist, speaker, and adventurer on a mission to uplift and transform. His journey ranges from multi-platinum hits to soul-searching adventures.</p>
+      <p>His keynote is a dynamic experience that blends motivational speaking, live music, and interactive audience moments — built to move the room.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-solid">Book Mike to Speak</a>
+        <a href="#contact" class="btn btn-outline">Highlighted Events</a>
+      </div>
+    </div>
+    <div class="message-visual reveal">
+      <img src="https://mikeposner.com/home/img/mike-posner-scaled-2560-1.png" alt="Mike Posner speaking on stage" referrerpolicy="no-referrer">
+      <div class="badge">Live music + real stories</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOURS -->
+<section class="band tours" id="tours">
+  <div class="wrap">
+    <div class="tours-head reveal">
+      <h2>Tours</h2>
+      <p>Get updates on new shows, new music &amp; more</p>
+    </div>
+    <div class="tour-list reveal" id="tourList" aria-live="polite">
+      <div class="tour-status">Loading tour dates…</div>
+    </div>
+    <div class="tours-foot reveal">
+      <span>Don't see a show near you?</span>
+      <div class="cta-row" style="margin:0">
+        <a href="https://www.bandsintown.com/a/274407?came_from=267" target="_blank" rel="noopener" class="btn btn-outline">Request a Show</a>
+        <a href="#contact" class="btn btn-solid">Book Mike to Perform</a>
+      </div>
+    </div>
+    <a class="bit-credit reveal" href="https://www.bandsintown.com/a/274407?came_from=267" target="_blank" rel="noopener">Live dates powered by Bandsintown</a>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="band quote reveal">
+  <img class="watermark" src="assets/mp-icon-wht.png" alt="" aria-hidden="true">
+  <div class="wrap">
+    <blockquote class="serif">"True happiness comes from growth."</blockquote>
+    <cite>— Mike Posner</cite>
+  </div>
+</section>
+
+<!-- ADVENTURE -->
+<section class="band adventure" id="adventure">
+  <div class="wrap">
+    <div class="adv-head reveal">
+      <p class="eyebrow">Adventure</p>
+      <h2>The journey on foot.</h2>
+      <p>Beyond his chart-topping music, Mike is an endurance athlete. He walked across the United States in 2019 and summited Mount Everest in 2021 — and he's back on foot for a second crossing along the Continental Divide Trail.</p>
+    </div>
+    <div class="adv-grid">
+      <article class="adv-card reveal">
+        <img src="https://mikeposner.com/home/img/mask-group.png" alt="Walk Across America" referrerpolicy="no-referrer">
+        <div class="body">
+          <div class="yr">2019</div>
+          <h3>Walk Across America</h3>
+          <p class="tagline">2,800 miles, coast to coast, on foot.</p>
+        </div>
+      </article>
+      <article class="adv-card reveal">
+        <img src="https://mikeposner.com/home/img/mask-group-1.png" alt="Summiting Mount Everest" referrerpolicy="no-referrer">
+        <div class="body">
+          <div class="yr">2021</div>
+          <h3>Summiting Mount Everest</h3>
+          <p class="tagline">Standing on top of the world.</p>
+        </div>
+      </article>
+      <article class="adv-card reveal">
+        <img src="https://mikeposner.com/home/img/mask-group-2.png" alt="Continental Divide Trail" referrerpolicy="no-referrer">
+        <div class="body">
+          <div class="yr">2025 — Ongoing</div>
+          <h3>The Continental Divide Trail</h3>
+          <p class="tagline">3,000 miles, Mexico to Canada.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="band contact" id="contact">
+  <div class="wrap inner reveal">
+    <p class="eyebrow">Let's Get In Touch</p>
+    <h2>Bring Mike to your stage.</h2>
+    <p>Reach out and Mike's team will respond promptly to discuss availability, your event's needs, and how to create an unforgettable experience for your audience.</p>
+    <a href="mailto:booking@mikeposner.com" class="btn btn-solid">Contact Mike</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img class="foot-script" src="assets/mp-logo-script-wht.png" alt="Mike Posner">
+        <p>Grammy-nominated artist, speaker, and adventurer on a mission to uplift and transform.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/mikeposner/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .4 1.4.9.5.4.7.8.9 1.4.1.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.4 1-.9 1.4-.4.5-.8.7-1.4.9-.4.1-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.4-1.4-.9-.5-.4-.7-.8-.9-1.4-.1-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.4-1 .9-1.4.4-.5.8-.7 1.4-.9.4-.1 1-.3 2.2-.4 1.3-.1 1.7-.1 4.9-.1zm0 8.1a3.2 3.2 0 100 6.4 3.2 3.2 0 000-6.4zm6.2-.4a1.1 1.1 0 11-2.3 0 1.1 1.1 0 012.3 0z"/></svg></a>
+          <a href="https://www.youtube.com/mikeposner" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.5c-.1-1-.5-1.7-1.1-2.1-.9-.5-4.3-.5-9.9-.5s-9 0-9.9.5C1.5 5.8 1.1 6.5 1 7.5.9 8.6.9 10 .9 12s0 3.4.1 4.5c.1 1 .5 1.7 1.1 2.1.9.5 4.3.5 9.9.5s9 0 9.9-.5c.6-.4 1-1.1 1.1-2.1.1-1.1.1-2.5.1-4.5s0-3.4-.1-4.5zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a>
+          <a href="https://twitter.com/MikePosner" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2.5h3.3l-7.2 8.2 8.5 11.3h-6.7l-5.2-6.8-6 6.8H1.6l7.7-8.8L1.1 2.5h6.8l4.7 6.2 5.6-6.2zm-1.2 17.6h1.8L7.1 4.3H5.1l11.9 15.8z"/></svg></a>
+          <a href="https://open.spotify.com/artist/2KsP6tYLJlTBvSUxnwlVWa" target="_blank" rel="noopener" aria-label="Spotify"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.6 14.4a.6.6 0 01-.9.2c-2.4-1.5-5.5-1.8-9.1-1a.6.6 0 11-.3-1.2c3.9-.9 7.4-.5 10.1 1.1.3.2.4.6.2.9zm1.2-2.7a.8.8 0 01-1 .3c-2.8-1.7-7-2.2-10.2-1.2a.8.8 0 11-.5-1.5c3.7-1.1 8.3-.6 11.5 1.4.3.2.5.7.2 1zm.1-2.8C14.6 8.9 9.2 8.7 6 9.7a.9.9 0 11-.5-1.7c3.7-1.1 9.6-.9 13.4 1.3a.9.9 0 11-.9 1.6z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Sitemap</h5>
+          <a href="#top">Home</a>
+          <a href="#tours">Live</a>
+          <a href="#music">Music</a>
+          <a href="#adventure">Adventure</a>
+          <a href="#story">About</a>
+        </div>
+        <div class="foot-col">
+          <h5>Connect</h5>
+          <a href="https://mike-posner.myshopify.com/" target="_blank" rel="noopener">Shop</a>
+          <a href="#contact">Book Mike</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Mike Posner. All rights reserved.</span>
+      <span>Where music meets message.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // intro preloader — show on every load/refresh, then reveal site
+  (function(){
+    var pl = document.getElementById('preloader');
+    if(!pl) return;
+    var INTRO = 1500, FADE = 600;
+    setTimeout(function(){ document.body.classList.remove('pl-lock'); }, INTRO);
+    setTimeout(function(){ if(pl && pl.parentNode) pl.parentNode.removeChild(pl); }, INTRO + FADE + 50);
+  })();
+
+  // newsletter modal — opens in-page so the hero video keeps looping behind it
+  (function(){
+    var modal = document.getElementById('nlModal');
+    var openBtn = document.getElementById('newsletterOpen');
+    var form = document.getElementById('nlForm');
+    var card = modal ? modal.querySelector('.nl-card') : null;
+    if(!modal || !openBtn) return;
+    function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+      setTimeout(function(){ var i=document.getElementById('nlEmail'); if(i) i.focus(); }, 80); }
+    function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+    openBtn.addEventListener('click', open);
+    modal.querySelectorAll('[data-nl-close]').forEach(function(el){ el.addEventListener('click', close); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')) close(); });
+    var KIT_ACTION = 'https://app.kit.com/forms/9588354/subscriptions';
+    if(form) form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var em = document.getElementById('nlEmail');
+      var btn = form.querySelector('button[type="submit"]');
+      var err = document.getElementById('nlError');
+      if(err){ err.textContent=''; err.classList.remove('show'); }
+      if(!em.value || (em.checkValidity && !em.checkValidity())){ if(em.reportValidity) em.reportValidity(); return; }
+      var label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Subscribing…';
+      var data = new FormData(); data.append('email_address', em.value);
+      fetch(KIT_ACTION, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
+        .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { ok:r.ok, j:j }; }); })
+        .then(function(res){
+          var st = res.j && (res.j.status || res.j.state);
+          if(res.ok && st !== 'error'){
+            card.classList.add('done');           // swap form -> "check your inbox", stay on page
+          } else {
+            throw new Error((res.j && res.j.message) || 'failed');
+          }
+        })
+        .catch(function(){
+          btn.disabled = false; btn.textContent = label;
+          if(err){ err.textContent = "Hmm, that didn't go through — please try again."; err.classList.add('show'); }
+        });
+    });
+  })();
+
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 30);
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ===== Live tour dates via Bands in Town =====
+  (function(){
+    var APP='js_posner-6nd.pages.dev', ARTIST='274407';
+    var list=document.getElementById('tourList');
+    if(!list) return;
+    var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var cache={};
+    function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+    function fmt(dt){var p=String(dt).split('T')[0].split('-');return MON[(+p[1])-1]+' '+(+p[2]);}
+    function row(e){
+      var v=e.venue||{}, city=v.city||'', loc=v.region||v.country||'';
+      var cityLine=city+(loc?', '+loc:'');
+      var venueName=v.name||e.title||'Live show';
+      var offers=e.offers||[], tix=null;
+      for(var i=0;i<offers.length;i++){ if((offers[i].type||'')==='Tickets'){ tix=offers[i]; break; } }
+      var soldout=tix && /sold/i.test(tix.status||'');
+      var tixUrl=(tix&&tix.url)||e.url;
+      var tixBtn=soldout
+        ? '<span class="btn btn-solid btn-soldout">Sold Out</span>'
+        : '<a href="'+esc(tixUrl)+'" target="_blank" rel="noopener" class="btn btn-solid">Tickets</a>';
+      return '<div class="show">'
+        +'<div class="date"><span class="d">'+fmt(e.datetime)+'</span><span class="city">'+esc(cityLine)+'</span></div>'
+        +'<div class="venue">'+esc(venueName)+'</div>'
+        +'<div class="actions"><a href="'+esc(e.url)+'" target="_blank" rel="noopener" class="pill-link">RSVP</a>'+tixBtn+'</div>'
+        +'</div>';
+    }
+    function show(html){ list.innerHTML=html; }
+    function status(msg,cls){ show('<div class="tour-status '+(cls||'')+'">'+msg+'</div>'); }
+    function render(mode,data){
+      if(!Array.isArray(data)||!data.length){
+        status(mode==='past'?'No past shows to display.':'No upcoming shows right now — check back soon.');
+        return;
+      }
+      if(mode==='past') data=data.slice().reverse().slice(0,12);
+      show(data.map(row).join(''));
+    }
+    function load(mode){
+      if(cache[mode]){ render(mode,cache[mode]); return; }
+      status('Loading tour dates…','loading');
+      fetch('https://rest.bandsintown.com/artists/id_'+ARTIST+'/events?app_id='+encodeURIComponent(APP)+'&date='+mode)
+        .then(function(r){ if(!r.ok) throw r.status; return r.json(); })
+        .then(function(d){ cache[mode]=d; render(mode,d); })
+        .catch(function(){
+          status('Couldn\'t load live dates right now. <a href="https://www.bandsintown.com/a/'+ARTIST+'?came_from=267" target="_blank" rel="noopener">See all dates on Bandsintown &rarr;</a>');
+        });
+    }
+    document.querySelectorAll('.tour-tabs button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var cur=document.querySelector('.tour-tabs button.active');
+        if(cur) cur.classList.remove('active');
+        b.classList.add('active');
+        load(b.getAttribute('data-tab'));
+      });
+    });
+    load('upcoming');
+  })();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
