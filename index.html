@@ -22,7 +22,6 @@
   @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
   @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
   @font-face{font-family:'Metropolis';src:url('assets/fonts/Metropolis-Black.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:swap}
-  @font-face{font-family:'Caveat';src:url('assets/fonts/Caveat-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
   :root{
     --ink:#1d2433;
     --ink-soft:#5a6678;
@@ -148,7 +147,7 @@
   .story{background:linear-gradient(180deg,#94a6d6 0%,#b3c0e8 38%,#e3e9f7 100%);padding-top:clamp(34px,4vw,60px)}
   .display-head{font-size:clamp(3rem,11vw,8.5rem);line-height:.92;color:var(--white);letter-spacing:-.02em;text-shadow:0 8px 36px rgba(28,40,80,.35)}
   .display-head .l2{display:block;color:var(--accent-deep);text-shadow:none}
-  .display-head.hi-mike{font-family:'Caveat',cursive;font-weight:700;color:var(--accent-deep);font-size:clamp(2.3rem,7.8vw,5.2rem);line-height:1;letter-spacing:0;text-shadow:0 6px 26px rgba(28,40,80,.16)}
+  .display-head.hi-mike{font-family:'VC Garamond Condensed',Georgia,serif;font-weight:600;color:var(--accent-deep);font-size:clamp(2.4rem,7vw,4.8rem);line-height:1;letter-spacing:-.012em;text-shadow:0 6px 26px rgba(28,40,80,.14)}
   .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;margin-top:38px}
   .story-copy{align-self:center}
   .story-copy p{color:var(--ink-soft);font-size:1.18rem;line-height:1.6;margin-bottom:18px;max-width:54ch}
@@ -197,6 +196,20 @@
   .message-visual{border-radius:24px;overflow:hidden;box-shadow:var(--shadow);position:relative;aspect-ratio:4/3}
   .message-visual img{width:100%;height:100%;object-fit:cover}
   .message-visual .badge{position:absolute;left:20px;bottom:20px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);padding:12px 20px;border-radius:14px;font-weight:600;color:var(--accent-deep);font-size:.9rem;box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
+  /* keynote flip card: photo <-> youtube video */
+  .flip-card{perspective:1600px;overflow:visible}
+  .flip-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.45,.05,.25,1)}
+  .flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;border-radius:24px}
+  .flip-front{cursor:pointer}
+  .flip-back{transform:rotateY(180deg);background:#0a1020}
+  .yt-facade{position:absolute;inset:0;background-size:cover;background-position:center;cursor:pointer;display:grid;place-items:center}
+  .yt-facade::after{content:"";position:absolute;inset:0;background:rgba(10,16,32,.30);transition:background .25s}
+  .yt-facade:hover::after,.yt-facade:focus-visible::after{background:rgba(10,16,32,.12)}
+  .yt-play{position:relative;z-index:1;width:72px;height:auto;display:block;filter:drop-shadow(0 8px 20px rgba(0,0,0,.5));transition:transform .25s}
+  .yt-facade:hover .yt-play{transform:scale(1.09)}
+  .flip-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .flip-hint{position:absolute;top:16px;right:16px;z-index:2;background:rgba(10,16,32,.55);color:#fff;font-size:.74rem;font-weight:600;letter-spacing:.03em;padding:6px 12px;border-radius:100px;backdrop-filter:blur(6px);pointer-events:none;display:flex;align-items:center;gap:6px}
   .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
 
   /* TOURS */
@@ -219,7 +232,7 @@
   .show .actions .btn{padding:11px 24px;font-size:.82rem}
   .pill-link{padding:11px 24px;border-radius:100px;border:1.5px solid var(--line);font-weight:600;font-size:.82rem;color:var(--ink);transition:all .25s}
   .pill-link:hover{border-color:var(--accent);color:var(--accent);background:#fff}
-  .tours-foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:36px;padding-top:30px;border-top:1px solid var(--line)}
+  .tours-foot{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;margin-top:36px;padding-top:30px;border-top:1px solid var(--line);text-align:center}
   .tours-foot span{font-weight:600;color:var(--ink)}
   .tour-status{padding:46px 8px;text-align:center;color:var(--ink-soft);font-size:1.02rem}
   .tour-status a{color:var(--accent);font-weight:600}
@@ -465,7 +478,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="#top">Home</a>
       <a href="#tours">Tours</a>
-      <a href="https://mikeposner.lnk.to/IWBTI?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">Music</a>
+      <a href="https://mikeposner.lnk.to/IWBTI?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener" class="js-music-link">Music</a>
       <a href="#contact" class="js-book">Book Mike</a>
       <a href="#adventure">Adventure</a>
       <a href="#story">About</a>
@@ -590,7 +603,7 @@
   <div class="wrap">
     <div class="big"><small>Over</small>17 Billion</div>
     <p>Streams to date — and millions of podcast listeners who followed his Walk and Everest climb in real time.</p>
-    <a href="https://www.instagram.com/mikeposner/?hl=en" target="_blank" rel="noopener" class="btn btn-ghost-white">Learn More</a>
+    <a href="https://mikeposner.lnk.to/IWBTI?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener" class="btn btn-ghost-white js-music-link">Listen</a>
   </div>
 </section>
 
@@ -607,9 +620,19 @@
         <a href="#tours" class="btn btn-outline">Highlighted Events</a>
       </div>
     </div>
-    <div class="message-visual reveal">
-      <img src="assets/media/mike-posner-scaled-2560-1.png" alt="Mike Posner speaking on stage" referrerpolicy="no-referrer">
-      <div class="badge">Live music + real stories</div>
+    <div class="message-visual reveal flip-card" id="keynoteFlip">
+      <div class="flip-inner">
+        <div class="flip-face flip-front">
+          <img src="assets/media/mike-posner-scaled-2560-1.png" alt="Mike Posner speaking on stage" referrerpolicy="no-referrer">
+          <div class="badge">Live music + real stories</div>
+        </div>
+        <div class="flip-face flip-back">
+          <div class="yt-facade" role="button" tabindex="0" aria-label="Play video"
+               style="background-image:url('https://i.ytimg.com/vi/8qojNkkvzSQ/hqdefault.jpg')">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><path d="M66.5 7.5c-.8-3-3-5.2-6-6C55 0 34 0 34 0S13 0 7.5 1.5c-3 .8-5.2 3-6 6C0 13 0 24 0 24s0 11 1.5 16.5c.8 3 3 5.2 6 6C13 48 34 48 34 48s21 0 26.5-1.5c3-.8 5.2-3 6-6C68 35 68 24 68 24s0-11-1.5-16.5z" fill="#fff" opacity=".95"/><path d="M27 34l18-10-18-10z" fill="#22357f"/></svg></span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -626,10 +649,7 @@
     </div>
     <div class="tours-foot reveal">
       <span>Don't see a show near you?</span>
-      <div class="cta-row" style="margin:0">
-        <a href="https://www.bandsintown.com/a/274407?came_from=267" target="_blank" rel="noopener" class="btn btn-outline">Request a Show</a>
-        <a href="#contact" class="btn btn-solid js-book">Book Mike to Perform</a>
-      </div>
+      <a href="#contact" class="btn btn-solid js-book">Book Mike to Perform</a>
     </div>
     <a class="bit-credit reveal" href="https://www.bandsintown.com/a/274407?came_from=267" target="_blank" rel="noopener">Live dates powered by Bandsintown</a>
   </div>
@@ -872,7 +892,7 @@
           <h5>Sitemap</h5>
           <a href="#top">Home</a>
           <a href="#tours">Live</a>
-          <a href="https://mikeposner.lnk.to/IWBTI?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">Music</a>
+          <a href="https://mikeposner.lnk.to/IWBTI?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener" class="js-music-link">Music</a>
           <a href="#adventure">Adventure</a>
           <a href="#story">About</a>
         </div>
@@ -988,6 +1008,44 @@
     document.querySelectorAll('.js-reading').forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); open(); }); });
     modal.querySelectorAll('[data-rd-close]').forEach(function(el){ el.addEventListener('click', close); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')) close(); });
+  })();
+
+  // shared music link — change MUSIC_URL once to update the nav, footer, and the "Listen" button together
+  (function(){
+    var MUSIC_URL = 'https://mikeposner.lnk.to/IWBTI?utm_source=ig&utm_medium=social&utm_content=link_in_bio';
+    document.querySelectorAll('.js-music-link').forEach(function(a){
+      a.setAttribute('href', MUSIC_URL); a.setAttribute('target','_blank'); a.setAttribute('rel','noopener');
+    });
+  })();
+
+  // keynote flip card — auto-flips photo <-> video; hover holds on the video, click plays it
+  (function(){
+    var card = document.getElementById('keynoteFlip');
+    if(!card) return;
+    var front = card.querySelector('.flip-front');
+    var facade = card.querySelector('.yt-facade');
+    var timer = null, playing = false;
+    function tick(){ if(!playing) card.classList.toggle('flipped'); }
+    function start(){ stop(); timer = setInterval(tick, 4500); }
+    function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+    function play(){
+      if(playing) return; playing = true; stop(); card.classList.add('flipped');
+      var ifr = document.createElement('iframe');
+      ifr.src = 'https://www.youtube.com/embed/8qojNkkvzSQ?autoplay=1&rel=0&playsinline=1';
+      ifr.setAttribute('allow','autoplay; encrypted-media; picture-in-picture; fullscreen');
+      ifr.setAttribute('allowfullscreen',''); ifr.setAttribute('title','Mike Posner video');
+      facade.parentNode.replaceChild(ifr, facade);
+    }
+    card.addEventListener('mouseenter', function(){ stop(); if(!playing) card.classList.add('flipped'); });
+    card.addEventListener('mouseleave', function(){ if(!playing){ card.classList.remove('flipped'); start(); } });
+    if(front) front.addEventListener('click', function(){ if(!playing){ stop(); card.classList.add('flipped'); } });
+    facade.addEventListener('click', play);
+    facade.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); play(); } });
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ es.forEach(function(en){
+        if(en.isIntersecting){ if(!playing && !timer) start(); } else { stop(); }
+      }); }, {threshold:.25}).observe(card);
+    } else { start(); }
   })();
 
   // booking form — sends the inquiry to booking@mikeposner.com, shows on-page confirmation
