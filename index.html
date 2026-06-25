@@ -22,6 +22,7 @@
   @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
   @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
   @font-face{font-family:'Metropolis';src:url('assets/fonts/Metropolis-Black.otf') format('opentype');font-weight:800 900;font-style:normal;font-display:swap}
+  @font-face{font-family:'Caveat';src:url('assets/fonts/Caveat-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
   :root{
     --ink:#1d2433;
     --ink-soft:#5a6678;
@@ -79,7 +80,7 @@
   .brand-dark{display:none}
   header.scrolled .brand-light{display:none}
   header.scrolled .brand-dark{display:block}
-  .nav-links{display:flex;align-items:center;gap:30px;flex:1 1 auto;justify-content:center}
+  .nav-links{display:flex;align-items:center;gap:22px;flex:1 1 auto;justify-content:center}
   .nav-links a{font-size:.92rem;font-weight:500;color:rgba(255,255,255,.92);transition:color .25s;position:relative}
   .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:currentColor;transition:width .25s}
   .nav-links a:not(.btn):hover::after{width:100%}
@@ -147,6 +148,7 @@
   .story{background:linear-gradient(180deg,#94a6d6 0%,#b3c0e8 38%,#e3e9f7 100%)}
   .display-head{font-size:clamp(3rem,11vw,8.5rem);line-height:.92;color:var(--white);letter-spacing:-.02em;text-shadow:0 8px 36px rgba(28,40,80,.35)}
   .display-head .l2{display:block;color:var(--accent-deep);text-shadow:none}
+  .display-head.hi-mike{font-family:'Caveat',cursive;font-weight:700;color:var(--accent-deep);font-size:clamp(3.6rem,12vw,8rem);line-height:1;letter-spacing:0;text-shadow:0 6px 26px rgba(28,40,80,.16)}
   .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;margin-top:54px}
   .story-copy p{color:var(--ink-soft);font-size:1.08rem;margin-bottom:20px;max-width:54ch}
   .story-copy p.lead{color:var(--ink);font-size:1.3rem;line-height:1.5;font-weight:500}
@@ -160,6 +162,21 @@
   .role{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.7);border:1px solid var(--line);padding:12px 22px;border-radius:100px;font-weight:600;font-size:.95rem;letter-spacing:.04em;color:var(--accent-deep);box-shadow:0 8px 24px -16px rgba(34,53,127,.5)}
   .role .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
   .center{text-align:center}
+  /* About timeline */
+  .bio{max-width:1010px;margin:clamp(40px,5.5vw,70px) auto 0}
+  .bio-label{text-align:center;display:block;margin-bottom:24px}
+  .bio-timeline{columns:2;column-gap:56px}
+  .bio-item{break-inside:avoid;display:grid;grid-template-columns:74px 1fr;gap:16px;padding:11px 2px;border-bottom:1px solid var(--line);align-items:baseline}
+  .bio-age{font-family:'VC Garamond Condensed',Georgia,serif;font-size:1.22rem;color:var(--accent-deep);line-height:1.15;white-space:nowrap}
+  .bio-item p{color:var(--ink-soft);font-size:.95rem;line-height:1.5;margin:0}
+  .bio-item p strong{color:var(--accent-deep);font-weight:700;letter-spacing:.02em}
+  .bio-item p em{color:var(--ink);font-style:italic}
+  .bio-close{max-width:680px;margin:clamp(42px,6vw,64px) auto 0;text-align:center}
+  .bio-close p{color:var(--ink-soft);font-size:1.08rem;line-height:1.72;margin-bottom:18px}
+  .bio-close .bio-bless{font-family:'VC Garamond Condensed',Georgia,serif;font-style:italic;
+    font-size:clamp(1.45rem,3vw,2rem);color:var(--accent-deep);line-height:1.3;margin-top:10px}
+  @media(max-width:780px){.bio{max-width:640px}.bio-timeline{columns:1}}
+  @media(max-width:560px){.bio-item{grid-template-columns:64px 1fr;gap:14px}}
 
   /* STREAMS BAND */
   .streams{background:linear-gradient(135deg,var(--accent-deep),var(--accent));color:#fff;text-align:center;overflow:hidden}
@@ -209,6 +226,19 @@
   .show .actions .btn-soldout{background:var(--ink-soft);border-color:var(--ink-soft);color:#fff;cursor:default;pointer-events:none;opacity:.85}
   .bit-credit{display:inline-block;margin-top:22px;font-size:.78rem;letter-spacing:.04em;color:var(--ink-soft);opacity:.7;transition:opacity .2s,color .2s}
   .bit-credit:hover{opacity:1;color:var(--accent)}
+  /* ===== EDC VIDEO EMBED ===== */
+  .edc{background:linear-gradient(180deg,#18285c 0%,#ffffff 90%);padding-top:clamp(34px,4.5vw,60px);padding-bottom:clamp(40px,5vw,68px)}
+  .edc-frame{position:relative;max-width:900px;margin:0 auto;border-radius:20px;overflow:hidden;
+    background:#000;aspect-ratio:16/9;box-shadow:0 44px 100px -44px rgba(0,0,0,.85)}
+  .edc-frame video{width:100%;height:100%;object-fit:cover;display:block}
+  .edc-sound{position:absolute;bottom:16px;right:16px;display:inline-flex;align-items:center;gap:8px;
+    padding:9px 15px;border-radius:100px;border:1px solid rgba(255,255,255,.45);
+    background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;font-family:inherit;font-size:.82rem;
+    font-weight:600;cursor:pointer;transition:background .2s,transform .2s}
+  .edc-sound:hover{background:rgba(0,0,0,.72);transform:translateY(-1px)}
+  .edc-sound svg{width:17px;height:17px}
+  .edc-caption{text-align:center;margin-top:20px;color:var(--ink-soft);
+    font-size:.82rem;letter-spacing:.06em;text-transform:uppercase}
   @media(max-width:680px){
     .show{grid-template-columns:1fr;gap:12px;text-align:left}
     .show .actions{flex-wrap:wrap}
@@ -221,6 +251,11 @@
   .quote .watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(420px,60vw);opacity:.06;z-index:0;pointer-events:none}
   .quote blockquote{font-family:'VC Garamond Condensed',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(1.9rem,5vw,3.4rem);line-height:1.18;max-width:18ch;margin:0 auto 22px}
   .quote cite{font-style:normal;letter-spacing:.18em;text-transform:uppercase;font-size:.82rem;opacity:.8;font-weight:600}
+  .quote-inner{display:flex;align-items:center;justify-content:center;gap:clamp(26px,5vw,60px);flex-wrap:wrap;text-align:center}
+  .quote-portrait{flex:0 0 auto;width:clamp(190px,24vw,290px);aspect-ratio:3/4;object-fit:cover;border-radius:20px;
+    box-shadow:0 34px 80px -34px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.14)}
+  .quote-text{display:flex;flex-direction:column;align-items:center}
+  .quote-inner blockquote{margin:0 0 18px}
 
   /* ADVENTURE */
   .adventure{background:var(--paper)}
@@ -242,6 +277,78 @@
   .contact .inner{max-width:640px;margin:0 auto}
   .contact h2{font-size:clamp(2.2rem,5.5vw,3.6rem);margin-bottom:18px}
   .contact p{color:var(--ink-soft);font-size:1.08rem;margin-bottom:30px}
+  /* ===== BOOKING FORM ===== */
+  .book-form{max-width:600px;margin:6px auto 0;text-align:left;background:rgba(255,255,255,.72);
+    border:1px solid var(--line);border-radius:24px;padding:clamp(26px,4vw,38px);
+    box-shadow:0 36px 80px -46px rgba(34,53,127,.45);backdrop-filter:blur(4px)}
+  .book-form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .book-field{margin-bottom:18px}
+  .book-field>label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:8px}
+  .book-field .req{color:var(--accent)}
+  .book-input{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid var(--line);
+    background:var(--paper);color:var(--ink);font-family:inherit;font-size:.98rem;transition:border-color .2s,background .2s}
+  .book-input:focus{outline:none;border-color:var(--accent);background:#fff}
+  textarea.book-input{resize:vertical;min-height:92px;border-radius:14px;line-height:1.5}
+  .book-radios{display:flex;flex-direction:column;gap:10px}
+  .book-radio{display:flex;align-items:flex-start;gap:11px;padding:13px 16px;border:1.5px solid var(--line);
+    border-radius:12px;background:var(--paper);cursor:pointer;transition:border-color .2s,background .2s;font-size:.96rem;color:var(--ink)}
+  .book-radio:hover{border-color:var(--sky)}
+  .book-radio input{margin-top:2px;accent-color:var(--accent);flex:0 0 auto}
+  .book-radio:has(input:checked){border-color:var(--accent);background:#fff}
+  .book-form .btn{width:100%;justify-content:center;margin-top:4px;padding:16px}
+  .book-error{display:none;margin-top:12px;color:#c0392b;font-size:.9rem;text-align:center}
+  .book-error.show{display:block}
+  .book-success{display:none;text-align:center;padding:14px 6px}
+  .book-success img{width:54px;height:54px;border-radius:50%;margin:0 auto 14px}
+  .book-success h3{font-size:1.9rem;margin-bottom:8px}
+  .book-success p{color:var(--ink-soft);font-size:1rem;margin:0}
+  .book-form.done form{display:none}
+  .book-form.done .book-success{display:block}
+  @media(max-width:560px){.book-form .row{grid-template-columns:1fr}}
+  /* booking popup */
+  .bk-modal{position:fixed;inset:0;z-index:9998;display:grid;place-items:center;padding:18px;
+    opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+  .bk-modal.open{opacity:1;visibility:visible}
+  .bk-backdrop{position:absolute;inset:0;background:rgba(10,18,40,.55);backdrop-filter:blur(3px);cursor:pointer}
+  .bk-card{position:relative;z-index:1;width:min(620px,100%);max-height:92vh;overflow-y:auto;
+    background:var(--paper);border-radius:24px;padding:clamp(26px,4vw,40px);
+    box-shadow:0 50px 120px -40px rgba(10,18,40,.8);
+    transform:translateY(16px) scale(.985);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .bk-modal.open .bk-card{transform:none}
+  .bk-close{position:absolute;top:14px;right:16px;width:36px;height:36px;border:0;border-radius:50%;
+    background:transparent;color:var(--ink-soft);font-size:1.6rem;line-height:1;cursor:pointer;z-index:2;transition:background .2s,color .2s}
+  .bk-close:hover{background:rgba(0,0,0,.06);color:var(--ink)}
+  .bk-head{text-align:center;margin-bottom:24px}
+  .bk-head h3{font-size:clamp(1.8rem,4vw,2.4rem);margin:10px 0 8px}
+  .bk-head .bk-sub{color:var(--ink-soft);font-size:.98rem;max-width:42ch;margin:0 auto}
+  /* inside the modal the form is borderless (the modal card is the frame) */
+  .bk-card .book-form{background:none;border:0;box-shadow:none;backdrop-filter:none;padding:0;max-width:none;margin:0}
+  /* recommended reading popup */
+  .reading-modal .bk-card{width:min(800px,100%)}
+  .reading-body{text-align:left;margin-top:2px}
+  .reading-group{margin-bottom:26px}
+  .reading-group:last-child{margin-bottom:2px}
+  .reading-group h4{font-family:'VC Garamond Condensed',Georgia,serif;font-size:1.5rem;color:var(--accent-deep);
+    margin:0 0 13px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+  .reading-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:11px 30px;margin:0;padding:0}
+  .reading-list li{position:relative;padding-left:16px;color:var(--ink-soft);font-size:.95rem;line-height:1.4}
+  .reading-list li::before{content:"";position:absolute;left:0;top:.52em;width:5px;height:5px;border-radius:50%;background:var(--sky)}
+  .reading-list li b{color:var(--ink);font-weight:600}
+  @media(max-width:600px){.reading-list{grid-template-columns:1fr}}
+  /* a reminder — closing band */
+  .reminder{background:linear-gradient(180deg,var(--accent-deep) 0%,#161f49 100%);color:#fff;text-align:center;position:relative;overflow:hidden}
+  .reminder .inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
+  .reminder-glow{position:absolute;width:560px;height:560px;border-radius:50%;left:50%;top:-180px;transform:translateX(-50%);
+    background:radial-gradient(circle,rgba(120,150,245,.34),transparent 68%);pointer-events:none}
+  .reminder .rd-badge{width:50px;height:50px;border-radius:50%;margin:0 auto 18px;display:block;opacity:.95}
+  .reminder .eyebrow{color:rgba(255,255,255,.66)}
+  .reminder-lead{font-family:'VC Garamond Condensed',Georgia,serif;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.24;margin:12px 0 20px;color:#fff}
+  .reminder-body{color:rgba(255,255,255,.84);font-size:clamp(1rem,2vw,1.12rem);line-height:1.72;margin:0 auto 24px;max-width:60ch}
+  .reminder-body em{font-style:italic;color:#fff;font-weight:500}
+  .reminder-sign{font-family:'VC Garamond Condensed',Georgia,serif;font-style:italic;font-size:clamp(1.4rem,3vw,2rem);color:#fff;margin:0}
+  /* hyperlinked life-timeline lines */
+  .bio-item p a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;transition:color .2s}
+  .bio-item p a:hover{color:var(--accent-deep)}
 
   /* FOOTER */
   footer{background:var(--ink);color:rgba(255,255,255,.72);padding:64px 0 36px}
@@ -316,7 +423,7 @@
     .adv-grid{grid-template-columns:1fr;gap:20px}
     .adv-card{min-height:360px}
   }
-  @media(max-width:760px){
+  @media(max-width:1120px){
     .nav{justify-content:space-between}
     .nav-cta{display:none}
     .nav-links{position:fixed;inset:80px 0 auto 0;flex:0 1 auto;flex-direction:column;gap:0;background:rgba(244,246,252,.98);backdrop-filter:blur(16px);
@@ -358,12 +465,13 @@
       <a href="#top">Home</a>
       <a href="#tours">Tours</a>
       <a href="https://mikeposner.lnk.to/IWBTI?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">Music</a>
-      <a href="#message">Book Mike</a>
+      <a href="#contact" class="js-book">Book Mike</a>
       <a href="#adventure">Adventure</a>
       <a href="#story">About</a>
       <a href="https://mike-posner.myshopify.com/" target="_blank" rel="noopener">Shop</a>
+      <a href="#" class="js-reading" role="button">Recommended Reading</a>
     </nav>
-    <a href="#contact" class="btn btn-solid nav-cta">Book Mike</a>
+    <a href="#contact" class="btn btn-solid nav-cta js-book">Book Mike</a>
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -384,7 +492,7 @@
     <img class="hero-logo" src="assets/mp-logo-script-wht.png" alt="Mike Posner">
     <p class="hero-tag">Grammy-nominated artist · speaker · adventurer</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-ghost-white">Book Mike</a>
+      <a href="#contact" class="btn btn-ghost-white js-book">Book Mike</a>
       <button type="button" class="btn btn-white" id="newsletterOpen">Get Updates</button>
     </div>
   </div>
@@ -399,8 +507,8 @@
   <div class="nl-card" role="dialog" aria-modal="true" aria-labelledby="nlTitle">
     <button class="nl-close" type="button" data-nl-close aria-label="Close">&times;</button>
     <img class="nl-badge" src="assets/mp-icon-circ-blk.png" alt="" aria-hidden="true">
-    <h3 id="nlTitle" class="serif">Stay in the loop</h3>
-    <p>New music, tour dates, and dispatches from the trail — straight to your inbox.</p>
+    <h3 id="nlTitle" class="serif">A note from Mike, every Monday</h3>
+    <p>Want a two-minute email every Monday — written personally by Mike — to inspire your week ahead?</p>
     <form id="nlForm" novalidate>
       <input type="email" id="nlEmail" required placeholder="you@email.com" autocomplete="email" aria-label="Email address">
       <button type="submit" class="btn btn-solid">Subscribe</button>
@@ -414,13 +522,12 @@
 <section class="band story" id="story">
   <div class="wrap">
     <div class="center reveal">
-      <h2 class="display-head">NOT YOUR<span class="l2">TYPICAL ARTIST</span></h2>
+      <h2 class="display-head hi-mike">Hi, I'm Mike.</h2>
     </div>
     <div class="story-grid">
       <div class="story-copy reveal">
-        <p class="lead">Mike's story is one of continual evolution: from chart-topping pop star, to grieving son on a soul-searching walk, to the mountaintop (literally), and onward into a life of service and self-discovery.</p>
-        <p>Mike Posner's career has never followed the rules. He's written some of the most ubiquitous songs of the past decade, collaborated with everyone from Justin Bieber to Lil Wayne to Avicii, walked 2,800 miles across America, and summited Mount Everest.</p>
-        <p>For years, millions have watched him repeatedly risk failure and physical danger in pursuit of something deep and true. What emerged is someone who not only commands a wide, multi-generational audience, but who actually makes a difference in their lives.</p>
+        <p class="lead">My name is Mike Posner, and I'm an artist, speaker, endurance athlete, lover of broccoli sprouts, disciple of Christ, work in progress, spiritual teacher, spiritual student — and in my best moments, a carrier of light to others.</p>
+        <p>My mission in this life is to be a blessing, love people, and have an absolute ball sharing the gifts God has given me. I've had an interesting life, but I'll make it short and sweet.</p>
       </div>
       <div class="story-photos reveal">
         <figure class="photo-card tall">
@@ -442,8 +549,37 @@
       <span class="role"><span class="dot"></span>Endurance Athlete</span>
       <span class="role"><span class="dot"></span>Spiritual Teacher</span>
     </div>
-    <div class="center reveal">
-      <a href="#adventure" class="btn btn-outline">See Mike's Story</a>
+    <div class="bio reveal">
+      <span class="bio-label eyebrow">My life, age by age</span>
+      <div class="bio-timeline">
+        <div class="bio-item"><div class="bio-age">Age 0</div><p>Born in Detroit on a very, very, very, very, very, very cold day.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 8</div><p>Already a sad, lonely kid. Started rapping.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 9</div><p>Recorded my first song.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 13</div><p>Used my bar mitzvah money to buy a keyboard and a microphone.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 15</div><p>Existentially sad to the point of depression — not kill-yourself sad, more there's-no-point-to-this-life-is-there sad.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 18</div><p>Recorded and released my first album. Sold it out of the trunk of my car to my classmates — made $700. Went to Duke University, still depressed. Met Big Sean and became part of his crew.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 20</div><p>Wrote and recorded a song called "Cooler Than Me" in my dorm room.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 22</div><p>"Cooler Than Me" becomes popular — like, <em>really</em> popular. Signed a record deal, got famous. Still depressed.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 24</div><p>The wave of fame dies. Still depressed. Learned guitar and piano. Big Sean gives me <em>Ask and It Is Given</em> by Esther and Jerry Hicks and <em>The Alchemist</em> by Paulo Coelho — and a spiritual dimension opens up in my life.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 25</div><p>Met Ram Dass — living proof that true love exists.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 26</div><p>Wrote "Sugar" for Maroon 5 and "Boyfriend" for Justin Bieber. My solo career is still considered over by most of the music industry.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 27</div><p>Wrote "I Took a Pill in Ibiza" on an airplane and released it.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 28</div><p>"I Took a Pill in Ibiza" becomes popular — like, number-one-song-in-the-country popular. Uh oh, I'm famous again. But spoiler alert: I was still depressed.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 29</div><p>My father died.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 30</div><p>My friend Avicii took his own life. My friend Ronnie died. My colleague Mac Miller died of an overdose. I did the Landmark Forum and looooong meditation retreats, and realized I'm going to die — so I'd better get around to living. But if I'm honest, the baseline emotion of my life was still sadness.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 31</div><p><a href="https://www.youtube.com/watch?v=uXeZNXdu-gs" target="_blank" rel="noopener">I walk across America on foot.</a></p></div>
+        <div class="bio-item"><div class="bio-age">Age 33</div><p><a href="https://www.youtube.com/watch?v=sdfgV-ZCnYw" target="_blank" rel="noopener">I climb Mt. Everest.</a></p></div>
+        <div class="bio-item"><div class="bio-age">Age 34</div><p>I make a lot of money — and guess what… I'm more depressed than ever.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 35</div><p>I go to Tony Robbins' Date with Destiny and remember who I actually am — and cure my own depression. <strong>I am joy. I am faith. I am love!</strong></p></div>
+        <div class="bio-item"><div class="bio-age">Age 36</div><p>I fall in love with the love of my life.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 37</div><p>I propose. She says yes. :)</p></div>
+        <div class="bio-item"><div class="bio-age">Age 38</div><p>Christ moves in my life and I accept Jesus. I hike the Continental Divide Trail (to stay in integrity, I only hiked 2,400 miles — I missed 400 when I hurt my knee, and I still intend to do those to honor my word to myself). I am here to serve.</p></div>
+      </div>
+    </div>
+    <div class="bio-close reveal">
+      <p>All that to say: I've had a wild, crazy life full of external accomplishments. Some have been monetary, some clout-based, some involved fame, and some involved wild physical feats like climbing Everest or walking across America twice. But my greatest accomplishment is this — I went from a person whose baseline emotional state was cynical, resentful, and depressed to a person whose baseline emotional state is joy, faith, and, even deeper than those, love.</p>
+      <p>My life's mission is now to help other people on that journey. Because you are a wonderful human — more wonderful than you realize — and you deserve to enjoy your life.</p>
+      <p class="bio-bless">I love you, and thank you for reading this. God bless you.</p>
     </div>
   </div>
 </section>
@@ -466,7 +602,7 @@
       <p>Mike Posner is a Grammy-nominated artist, speaker, and adventurer on a mission to uplift and transform. His journey ranges from multi-platinum hits to soul-searching adventures.</p>
       <p>His keynote is a dynamic experience that blends motivational speaking, live music, and interactive audience moments — built to move the room.</p>
       <div class="cta-row">
-        <a href="#contact" class="btn btn-solid">Book Mike to Speak</a>
+        <a href="#contact" class="btn btn-solid js-book">Book Mike to Speak</a>
         <a href="#tours" class="btn btn-outline">Highlighted Events</a>
       </div>
     </div>
@@ -491,19 +627,40 @@
       <span>Don't see a show near you?</span>
       <div class="cta-row" style="margin:0">
         <a href="https://www.bandsintown.com/a/274407?came_from=267" target="_blank" rel="noopener" class="btn btn-outline">Request a Show</a>
-        <a href="#contact" class="btn btn-solid">Book Mike to Perform</a>
+        <a href="#contact" class="btn btn-solid js-book">Book Mike to Perform</a>
       </div>
     </div>
     <a class="bit-credit reveal" href="https://www.bandsintown.com/a/274407?came_from=267" target="_blank" rel="noopener">Live dates powered by Bandsintown</a>
   </div>
 </section>
 
+<!-- EDC VIDEO -->
+<section class="band edc">
+  <div class="wrap">
+    <div class="edc-frame reveal">
+      <video id="edcVideo" muted loop playsinline webkit-playsinline="true" preload="metadata"
+             poster="assets/media/edc-poster.jpg" aria-label="Mike Posner — Cooler Than Me, live at EDC Las Vegas">
+        <source src="assets/media/edc-cooler-than-me.mp4" type="video/mp4">
+      </video>
+      <button class="edc-sound" id="edcSound" type="button" aria-label="Toggle sound">
+        <svg class="ic-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        <svg class="ic-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>
+        <span class="edc-sound-label">Tap for sound</span>
+      </button>
+    </div>
+    <p class="edc-caption reveal">"Cooler Than Me" — live at EDC Las Vegas</p>
+  </div>
+</section>
+
 <!-- QUOTE -->
 <section class="band quote reveal">
   <img class="watermark" src="assets/mp-icon-wht.png" alt="" aria-hidden="true">
-  <div class="wrap">
-    <blockquote class="serif">"True happiness comes from growth."</blockquote>
-    <cite>— Mike Posner</cite>
+  <div class="wrap quote-inner">
+    <img class="quote-portrait" src="assets/media/mike-about.jpg" alt="Mike Posner" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+    <div class="quote-text">
+      <blockquote class="serif">"True happiness comes from growth."</blockquote>
+      <cite>— Mike Posner</cite>
+    </div>
   </div>
 </section>
 
@@ -535,7 +692,7 @@
       <article class="adv-card reveal">
         <img src="assets/media/mask-group-2.png" alt="Continental Divide Trail" referrerpolicy="no-referrer">
         <div class="body">
-          <div class="yr">2025 — Ongoing</div>
+          <div class="yr">2025</div>
           <h3>The Continental Divide Trail</h3>
           <p class="tagline">3,000 miles, Mexico to Canada.</p>
         </div>
@@ -547,12 +704,153 @@
 <!-- CONTACT -->
 <section class="band contact" id="contact">
   <div class="wrap inner reveal">
-    <p class="eyebrow">Let's Get In Touch</p>
+    <p class="eyebrow">Book Mike</p>
     <h2>Bring Mike to your stage.</h2>
-    <p>Reach out and Mike's team will respond promptly to discuss availability, your event's needs, and how to create an unforgettable experience for your audience.</p>
-    <a href="mailto:booking@mikeposner.com" class="btn btn-solid">Contact Mike</a>
+    <p>Tell us about your event and Mike's team will respond promptly to discuss availability, fit, and how to create an unforgettable experience for your audience.</p>
+    <button type="button" class="btn btn-solid js-book">Book Mike</button>
   </div>
 </section>
+
+<!-- A REMINDER (closing band) -->
+<section class="band reminder reveal">
+  <div class="reminder-glow"></div>
+  <div class="wrap inner">
+    <img class="rd-badge" src="assets/mp-icon-circ-wht.png" alt="" aria-hidden="true">
+    <p class="eyebrow">A Reminder…</p>
+    <p class="reminder-lead">If you're reading this, <strong>congratulations</strong> — you've reached the end of my website.</p>
+    <p class="reminder-body">It also means you are a blessed human, and I hope you have a blessed day and bless others in the process. Remember: <em>you matter. You are joy. You are faith.</em> If you're going through a tough moment right now, that just means life is preparing you for something <strong>more</strong>.</p>
+    <p class="reminder-sign">Keep going.</p>
+  </div>
+</section>
+
+<!-- BOOKING MODAL -->
+<div class="bk-modal" id="bookModal" aria-hidden="true">
+  <div class="bk-backdrop" data-bk-close></div>
+  <div class="bk-card" role="dialog" aria-modal="true" aria-labelledby="bkTitle">
+    <button class="bk-close" type="button" data-bk-close aria-label="Close">&times;</button>
+    <div class="bk-head">
+      <p class="eyebrow" style="display:inline-block">Book Mike</p>
+      <h3 id="bkTitle" class="serif">Bring Mike to your stage.</h3>
+      <p class="bk-sub">Tell us about your event and Mike's team will respond promptly.</p>
+    </div>
+    <div class="book-form" id="bookForm">
+      <form id="bookFormEl" novalidate>
+        <input type="hidden" name="access_key" value="30cddc14-a67a-40c2-9c76-1307257e6f83">
+        <input type="hidden" name="subject" value="New booking inquiry — MikePosner.com">
+        <input type="hidden" name="from_name" value="MikePosner.com Booking Form">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row">
+          <div class="book-field">
+            <label>Name <span class="req">*</span></label>
+            <input class="book-input" type="text" name="name" autocomplete="name" required>
+          </div>
+          <div class="book-field">
+            <label>Email <span class="req">*</span></label>
+            <input class="book-input" type="email" name="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="book-field">
+            <label>Proposed event date <span class="req">*</span></label>
+            <input class="book-input" type="date" name="event_date" required>
+          </div>
+          <div class="book-field">
+            <label>Event location <span class="req">*</span></label>
+            <input class="book-input" type="text" name="location" placeholder="City, State / venue" required>
+          </div>
+        </div>
+        <div class="book-field">
+          <label>Would you like Mike to… <span class="req">*</span></label>
+          <div class="book-radios">
+            <label class="book-radio"><input type="radio" name="request" value="Motivational speech + a few songs acoustic" required> Do a motivational speech + a few songs acoustic</label>
+            <label class="book-radio"><input type="radio" name="request" value="Perform with DJ"> Perform with DJ</label>
+            <label class="book-radio"><input type="radio" name="request" value="Perform acoustic"> Perform acoustic</label>
+          </div>
+        </div>
+        <div class="book-field">
+          <label>What is your budget?</label>
+          <input class="book-input" type="text" name="budget" placeholder="e.g. $75,000">
+        </div>
+        <div class="book-field" style="margin-bottom:22px">
+          <label>Anything else you'd like us to know?</label>
+          <textarea class="book-input" name="message" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-solid">Send Booking Inquiry</button>
+        <p class="book-error" id="bookError" role="alert"></p>
+      </form>
+      <div class="book-success">
+        <img src="assets/mp-icon-circ-blk.png" alt="" aria-hidden="true">
+        <h3 class="serif">Request received 🙌</h3>
+        <p>Thanks — your inquiry is on its way to Mike's team. We'll be in touch soon.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RECOMMENDED READING MODAL -->
+<div class="bk-modal reading-modal" id="readingModal" aria-hidden="true">
+  <div class="bk-backdrop" data-rd-close></div>
+  <div class="bk-card" role="dialog" aria-modal="true" aria-labelledby="rdTitle">
+    <button class="bk-close" type="button" data-rd-close aria-label="Close">&times;</button>
+    <div class="bk-head">
+      <p class="eyebrow" style="display:inline-block">From Mike's shelf</p>
+      <h3 id="rdTitle" class="serif">Recommended Reading</h3>
+      <p class="bk-sub">Books and experiences that shaped the way I see the world.</p>
+    </div>
+    <div class="reading-body">
+      <div class="reading-group">
+        <h4>Fiction</h4>
+        <ul class="reading-list">
+          <li><b>Infinite Jest</b> — David Foster Wallace</li>
+          <li><b>Shantaram</b> — Gregory David Roberts</li>
+          <li><b>The Alchemist</b> — Paulo Coelho</li>
+          <li><b>The Name of the Wind</b> — Patrick Rothfuss</li>
+          <li><b>A Christmas Memory</b> — Truman Capote</li>
+          <li><b>The Correspondent</b></li>
+          <li><b>How to Get Filthy Rich in Rising Asia</b> — Mohsin Hamid</li>
+          <li><b>The Gift</b> — Hafiz</li>
+        </ul>
+      </div>
+      <div class="reading-group">
+        <h4>Non-Fiction</h4>
+        <ul class="reading-list">
+          <li><b>The Holy Bible</b></li>
+          <li><b>The Power of Now</b> — Eckhart Tolle</li>
+          <li><b>Fierce Intimacy</b> — Terry Real</li>
+          <li><b>Breath</b> — James Nestor</li>
+          <li><b>All You Need to Know About the Music Business</b> — Donald Passman</li>
+          <li><b>Can't Hurt Me</b> — David Goggins</li>
+          <li><b>Never Finished</b> — David Goggins</li>
+          <li><b>The Art of Asking</b> — Amanda Palmer</li>
+          <li><b>Money: Master the Game</b> — Tony Robbins</li>
+          <li><b>Mindless Eating</b> — Brian Wansink</li>
+          <li><b>The War of Art</b> — Steven Pressfield</li>
+          <li><b>Getting Past Your Breakup</b> — Susan J. Elliott</li>
+          <li><b>The 7 Habits of Highly Effective People</b> — Stephen Covey</li>
+          <li><b>The Psychology of Achievement</b> — Brian Tracy</li>
+          <li><b>The Bhagavad Gita</b></li>
+          <li><b>Man's Search for Meaning</b> — Viktor Frankl</li>
+          <li><b>The Magic</b> — Rhonda Byrne</li>
+          <li><b>Ask and It Is Given</b> — Esther &amp; Jerry Hicks</li>
+          <li><b>You Can Heal Your Life</b> — Louise Hay</li>
+          <li><b>Be Here Now</b> — Ram Dass</li>
+        </ul>
+      </div>
+      <div class="reading-group">
+        <h4>Recommended Courses &amp; Experiences</h4>
+        <ul class="reading-list">
+          <li><b>Date with Destiny</b> — Tony Robbins</li>
+          <li><b>Unleash the Power Within</b> — Tony Robbins</li>
+          <li><b>The Landmark Forum</b></li>
+          <li><b>The Atlas Project</b></li>
+          <li><b>Churches with good music</b></li>
+          <li><b>Vipassana meditation retreats</b></li>
+          <li><b>Solitary retreats</b> — Tara Mandala Retreat Center</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -580,7 +878,7 @@
         <div class="foot-col">
           <h5>Connect</h5>
           <a href="https://mike-posner.myshopify.com/" target="_blank" rel="noopener">Shop</a>
-          <a href="#contact">Book Mike</a>
+          <a href="#contact" class="js-book">Book Mike</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
@@ -609,10 +907,17 @@
     var form = document.getElementById('nlForm');
     var card = modal ? modal.querySelector('.nl-card') : null;
     if(!modal || !openBtn) return;
-    function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
-      setTimeout(function(){ var i=document.getElementById('nlEmail'); if(i) i.focus(); }, 80); }
+    function open(focus){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+      if(focus!==false) setTimeout(function(){ var i=document.getElementById('nlEmail'); if(i) i.focus(); }, 80); }
     function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
-    openBtn.addEventListener('click', open);
+    openBtn.addEventListener('click', function(){ open(true); });
+    // auto-open once, just after the intro animation (first visit only; no autofocus so mobile keyboards stay down)
+    function autoOpen(){ if(!modal.classList.contains('open')) open(false); }
+    try{
+      if(!localStorage.getItem('nlSeen')){
+        setTimeout(function(){ try{ localStorage.setItem('nlSeen','1'); }catch(e){} autoOpen(); }, 2400);
+      }
+    }catch(e){ setTimeout(autoOpen, 2400); }
     modal.querySelectorAll('[data-nl-close]').forEach(function(el){ el.addEventListener('click', close); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')) close(); });
     var KIT_ACTION = 'https://app.kit.com/forms/9588354/subscriptions';
@@ -659,6 +964,83 @@
     v.addEventListener('playing', function(){
       gestures.forEach(function(e){ document.removeEventListener(e, kick, {passive:true}); });
     });
+  })();
+
+  // booking popup — every "Book Mike" opens the form in a modal (video/page stays put)
+  (function(){
+    var modal = document.getElementById('bookModal');
+    if(!modal) return;
+    function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('pl-lock');
+      setTimeout(function(){ var i = modal.querySelector('input[name="name"]'); if(i) i.focus(); }, 90); }
+    function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('pl-lock'); }
+    document.querySelectorAll('.js-book').forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); open(); }); });
+    modal.querySelectorAll('[data-bk-close]').forEach(function(el){ el.addEventListener('click', close); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')) close(); });
+  })();
+
+  // recommended reading popup
+  (function(){
+    var modal = document.getElementById('readingModal');
+    if(!modal) return;
+    function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('pl-lock'); }
+    function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('pl-lock'); }
+    document.querySelectorAll('.js-reading').forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); open(); }); });
+    modal.querySelectorAll('[data-rd-close]').forEach(function(el){ el.addEventListener('click', close); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')) close(); });
+  })();
+
+  // booking form — sends the inquiry to booking@mikeposner.com, shows on-page confirmation
+  (function(){
+    var card = document.getElementById('bookForm');
+    var form = document.getElementById('bookFormEl');
+    if(!form) return;
+    var err = document.getElementById('bookError');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      err.classList.remove('show'); err.textContent='';
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var btn = form.querySelector('button[type="submit"]');
+      var label = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…';
+      fetch('https://api.web3forms.com/submit', {
+        method:'POST', headers:{'Accept':'application/json'}, body:new FormData(form)
+      })
+        .then(function(r){ return r.json(); })
+        .then(function(j){
+          if(j && j.success){
+            card.classList.add('done');
+            window.scrollTo({ top: card.getBoundingClientRect().top + window.scrollY - 130, behavior:'smooth' });
+          } else { throw new Error((j && j.message) || 'failed'); }
+        })
+        .catch(function(){
+          btn.disabled = false; btn.textContent = label;
+          err.textContent = "Something went wrong — please try again, or email booking@mikeposner.com directly.";
+          err.classList.add('show');
+        });
+    });
+  })();
+
+  // EDC video — autoplay (muted) when scrolled into view, pause when out; tap for sound
+  (function(){
+    var v = document.getElementById('edcVideo');
+    var btn = document.getElementById('edcSound');
+    if(!v) return;
+    v.muted = true;
+    function play(){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting) play(); else v.pause(); });
+      }, {threshold:0.45}).observe(v);
+    } else { play(); }
+    if(btn){
+      var icM = btn.querySelector('.ic-muted'), icS = btn.querySelector('.ic-sound'), lbl = btn.querySelector('.edc-sound-label');
+      btn.addEventListener('click', function(){
+        v.muted = !v.muted;
+        if(!v.muted) play();
+        icM.style.display = v.muted ? '' : 'none';
+        icS.style.display = v.muted ? 'none' : '';
+        lbl.textContent = v.muted ? 'Tap for sound' : 'Sound on';
+      });
+    }
   })();
 
   const hdr = document.getElementById('hdr');
