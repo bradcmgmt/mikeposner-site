@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Reminder — Mike Posner</title>
+<meta name="description" content="A note from Mike Posner. You matter. You are joy. You are faith. Keep going.">
+<link rel="icon" href="assets/mp-icon-circ-blk.png">
+<style>
+  @font-face{font-family:'VC Garamond Condensed';src:url('assets/fonts/VCGaramondCondensed-Regular.otf') format('opentype');font-weight:300 400;font-style:normal;font-display:swap}
+  @font-face{font-family:'VC Garamond Condensed';src:url('assets/fonts/VCGaramondCondensed-Medium.otf') format('opentype');font-weight:500 700;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+  :root{--accent:#3a5bd9;--accent-deep:#22357f;--white:#fff}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Metropolis',-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;background:#161f49;
+    -webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+  a{color:inherit;text-decoration:none}
+  /* top bar */
+  .rm-top{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,54px)}
+  .rm-top .brand img{height:30px;width:auto;display:block}
+  .rm-back{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;font-weight:600;color:rgba(255,255,255,.82);transition:color .2s}
+  .rm-back:hover{color:#fff}
+  .rm-back svg{transition:transform .2s}
+  .rm-back:hover svg{transform:translateX(-3px)}
+  /* hero */
+  .rm-hero{flex:1;position:relative;display:grid;place-items:center;text-align:center;overflow:hidden;
+    padding:140px 24px 96px;
+    background:radial-gradient(120% 78% at 50% 0%, #2a3d86 0%, var(--accent-deep) 44%, #161f49 100%)}
+  .rm-glow{position:absolute;width:720px;height:720px;max-width:120vw;border-radius:50%;left:50%;top:-240px;transform:translateX(-50%);
+    background:radial-gradient(circle, rgba(120,150,245,.42), transparent 66%);pointer-events:none;animation:rmPulse 6s ease-in-out infinite}
+  .rm-watermark{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:min(560px,86vw);opacity:.05;pointer-events:none;user-select:none}
+  .rm-inner{position:relative;z-index:1;max-width:740px;opacity:0;transform:translateY(18px);animation:rmRise .9s cubic-bezier(.2,.7,.2,1) .15s forwards}
+  .rm-badge{width:60px;height:60px;border-radius:50%;margin:0 auto 24px;display:block;opacity:.96;
+    box-shadow:0 18px 40px -18px rgba(0,0,0,.6)}
+  .rm-eyebrow{font-size:.78rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.64);margin-bottom:20px}
+  .rm-lead{font-family:'VC Garamond Condensed',Georgia,serif;font-weight:600;letter-spacing:-.012em;
+    font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.16;margin-bottom:26px}
+  .rm-lead strong{color:#fff}
+  .rm-body{color:rgba(255,255,255,.85);font-size:clamp(1.02rem,2vw,1.18rem);line-height:1.78;margin:0 auto 30px;max-width:58ch}
+  .rm-body em{font-style:italic;color:#fff;font-weight:500}
+  .rm-body strong{color:#fff;font-weight:700}
+  .rm-sign{font-family:'VC Garamond Condensed',Georgia,serif;font-style:italic;font-size:clamp(1.6rem,3.2vw,2.4rem);color:#fff;margin-bottom:42px}
+  .rm-cta{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--accent-deep);font-weight:600;font-size:1rem;
+    padding:15px 32px;border-radius:100px;box-shadow:0 20px 46px -22px rgba(0,0,0,.6);transition:transform .2s,box-shadow .2s}
+  .rm-cta svg{transition:transform .2s}
+  .rm-cta:hover{transform:translateY(-2px);box-shadow:0 28px 58px -24px rgba(0,0,0,.72)}
+  .rm-cta:hover svg{transform:translateX(-3px)}
+  @keyframes rmRise{to{opacity:1;transform:none}}
+  @keyframes rmPulse{0%,100%{opacity:.85;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.06)}}
+  @media(prefers-reduced-motion:reduce){.rm-inner{opacity:1;transform:none;animation:none}.rm-glow{animation:none}}
+  @media(max-width:560px){.rm-top{padding:18px 20px}.rm-hero{padding:120px 22px 80px}}
+</style>
+</head>
+<body>
+  <header class="rm-top">
+    <a class="brand" href="index.html" aria-label="Mike Posner — home">
+      <img src="assets/mp-logo-script-wht.png" alt="Mike Posner">
+    </a>
+    <a class="rm-back" href="index.html">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to site
+    </a>
+  </header>
+
+  <main class="rm-hero">
+    <div class="rm-glow"></div>
+    <img class="rm-watermark" src="assets/mp-icon-wht.png" alt="" aria-hidden="true">
+    <div class="rm-inner">
+      <img class="rm-badge" src="assets/mp-icon-circ-wht.png" alt="" aria-hidden="true">
+      <p class="rm-eyebrow">A Reminder…</p>
+      <h1 class="rm-lead">If you're reading this, <strong>congratulations</strong> — you've reached the end of my website.</h1>
+      <p class="rm-body">It also means you are a blessed human, and I hope you have a blessed day and bless others in the process. Remember: <em>you matter. You are joy. You are faith.</em> If you're going through a tough moment right now, that just means life is preparing you for something <strong>more</strong>.</p>
+      <p class="rm-sign">Keep going.</p>
+      <a class="rm-cta" href="index.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to mikeposner.com
+      </a>
+    </div>
+  </main>
+</body>
+</html>

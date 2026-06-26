@@ -79,7 +79,7 @@
   .brand-dark{display:none}
   header.scrolled .brand-light{display:none}
   header.scrolled .brand-dark{display:block}
-  .nav-links{display:flex;align-items:center;gap:22px;flex:1 1 auto;justify-content:center}
+  .nav-links{display:flex;align-items:center;gap:19px;flex:1 1 auto;justify-content:center}
   .nav-links a{font-size:.92rem;font-weight:500;color:rgba(255,255,255,.92);transition:color .25s;position:relative}
   .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:currentColor;transition:width .25s}
   .nav-links a:not(.btn):hover::after{width:100%}
@@ -360,6 +360,10 @@
   .reminder-body{color:rgba(255,255,255,.84);font-size:clamp(1rem,2vw,1.12rem);line-height:1.72;margin:0 auto 24px;max-width:60ch}
   .reminder-body em{font-style:italic;color:#fff;font-weight:500}
   .reminder-sign{font-family:'VC Garamond Condensed',Georgia,serif;font-style:italic;font-size:clamp(1.4rem,3vw,2rem);color:#fff;margin:0}
+  .reminder-cta{display:inline-flex;align-items:center;gap:9px;margin-top:6px;background:#fff;color:var(--accent-deep);font-weight:600;font-size:1rem;padding:15px 30px;border-radius:100px;box-shadow:0 20px 44px -22px rgba(0,0,0,.6);transition:transform .2s,box-shadow .2s}
+  .reminder-cta svg{transition:transform .2s}
+  .reminder-cta:hover{transform:translateY(-2px);box-shadow:0 28px 56px -24px rgba(0,0,0,.7)}
+  .reminder-cta:hover svg{transform:translateX(3px)}
   /* hyperlinked life-timeline lines */
   .bio-item p a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;transition:color .2s}
   .bio-item p a:hover{color:var(--accent-deep)}
@@ -437,7 +441,7 @@
     .adv-grid{grid-template-columns:1fr;gap:20px}
     .adv-card{min-height:360px}
   }
-  @media(max-width:1120px){
+  @media(max-width:1240px){
     .nav{justify-content:space-between}
     .nav-cta{display:none}
     .nav-links{position:fixed;inset:80px 0 auto 0;flex:0 1 auto;flex-direction:column;gap:0;background:rgba(244,246,252,.98);backdrop-filter:blur(16px);
@@ -484,6 +488,7 @@
       <a href="#story">About</a>
       <a href="https://mike-posner.myshopify.com/" target="_blank" rel="noopener">Shop</a>
       <a href="#" class="js-reading" role="button">Recommended Reading</a>
+      <a href="reminder.html">A Reminder</a>
     </nav>
     <a href="#contact" class="btn btn-solid nav-cta js-book">Book Mike</a>
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
@@ -573,21 +578,21 @@
         <div class="bio-item"><div class="bio-age">Age 15</div><p>Existentially sad to the point of depression — not kill-yourself sad, more there's-no-point-to-this-life-is-there sad.</p></div>
         <div class="bio-item"><div class="bio-age">Age 18</div><p>Recorded and released my first album. Sold it out of the trunk of my car to my classmates — made $700. Went to Duke University, still depressed. Met Big Sean and became part of his crew.</p></div>
         <div class="bio-item"><div class="bio-age">Age 20</div><p>Wrote and recorded a song called "Cooler Than Me" in my dorm room.</p></div>
-        <div class="bio-item"><div class="bio-age">Age 22</div><p>"Cooler Than Me" becomes popular — like, <em>really</em> popular. Signed a record deal, got famous. Still depressed.</p></div>
-        <div class="bio-item"><div class="bio-age">Age 24</div><p>The wave of fame dies. Still depressed. Learned guitar and piano. Big Sean gives me <em>Ask and It Is Given</em> by Esther and Jerry Hicks and <em>The Alchemist</em> by Paulo Coelho — and a spiritual dimension opens up in my life.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 22</div><p>"Cooler Than Me" became popular — like, <em>really</em> popular. Signed a record deal, got famous. Still depressed.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 24</div><p>The wave of fame died. Still depressed. Learned guitar and piano. Big Sean gave me <em>Ask and It Is Given</em> by Esther and Jerry Hicks and <em>The Alchemist</em> by Paulo Coelho — and a spiritual dimension opened up in my life.</p></div>
         <div class="bio-item"><div class="bio-age">Age 25</div><p>Met Ram Dass — living proof that true love exists.</p></div>
-        <div class="bio-item"><div class="bio-age">Age 26</div><p>Wrote "Sugar" for Maroon 5 and "Boyfriend" for Justin Bieber. My solo career is still considered over by most of the music industry.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 26</div><p>Wrote "Sugar" for Maroon 5 and "Boyfriend" for Justin Bieber. My solo career was still considered over by most of the music industry.</p></div>
         <div class="bio-item"><div class="bio-age">Age 27</div><p>Wrote "I Took a Pill in Ibiza" on an airplane and released it.</p></div>
-        <div class="bio-item"><div class="bio-age">Age 28</div><p>"I Took a Pill in Ibiza" becomes popular — like, number-one-song-in-the-country popular. Uh oh, I'm famous again. But spoiler alert: I was still depressed.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 28</div><p>"I Took a Pill in Ibiza" became popular — like, number-one-song-in-the-country popular. Uh oh, I was famous again. But spoiler alert: I was still depressed.</p></div>
         <div class="bio-item"><div class="bio-age">Age 29</div><p>My father died.</p></div>
-        <div class="bio-item"><div class="bio-age">Age 30</div><p>My friend Avicii took his own life. My friend Ronnie died. My colleague Mac Miller died of an overdose. I did the Landmark Forum and looooong meditation retreats, and realized I'm going to die — so I'd better get around to living. But if I'm honest, the baseline emotion of my life was still sadness.</p></div>
-        <div class="bio-item"><div class="bio-age">Age 31</div><p><a href="https://www.youtube.com/watch?v=uXeZNXdu-gs" target="_blank" rel="noopener">I walk across America on foot.</a></p></div>
-        <div class="bio-item"><div class="bio-age">Age 33</div><p><a href="https://www.youtube.com/watch?v=sdfgV-ZCnYw" target="_blank" rel="noopener">I climb Mt. Everest.</a></p></div>
-        <div class="bio-item"><div class="bio-age">Age 34</div><p>I make a lot of money — and guess what… I'm more depressed than ever.</p></div>
-        <div class="bio-item"><div class="bio-age">Age 35</div><p>I go to Tony Robbins' Date with Destiny and remember who I actually am — and cure my own depression. <strong>I am joy. I am faith. I am love!</strong></p></div>
-        <div class="bio-item"><div class="bio-age">Age 36</div><p>I fall in love with the love of my life.</p></div>
-        <div class="bio-item"><div class="bio-age">Age 37</div><p>I propose. She says yes. :)</p></div>
-        <div class="bio-item"><div class="bio-age">Age 38</div><p>Christ moves in my life and I accept Jesus. I hike the Continental Divide Trail (to stay in integrity, I only hiked 2,400 miles — I missed 400 when I hurt my knee, and I still intend to do those to honor my word to myself). I am here to serve.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 30</div><p>My friend Avicii took his own life. My friend Ronnie died. My colleague Mac Miller died of an overdose. I did the Landmark Forum and looooong meditation retreats, and realized I was going to die — so I'd better get around to living. But if I'm honest, the baseline emotion of my life was still sadness.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 31</div><p><a href="https://www.youtube.com/watch?v=uXeZNXdu-gs" target="_blank" rel="noopener">I walked across America on foot.</a></p></div>
+        <div class="bio-item"><div class="bio-age">Age 33</div><p><a href="https://www.youtube.com/watch?v=sdfgV-ZCnYw" target="_blank" rel="noopener">I climbed Mt. Everest.</a></p></div>
+        <div class="bio-item"><div class="bio-age">Age 34</div><p>I made a lot of money — and guess what… I was more depressed than ever.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 35</div><p>I went to Tony Robbins' Date with Destiny and remembered who I actually am — and cured my own depression. <strong>I am joy. I am faith. I am love!</strong></p></div>
+        <div class="bio-item"><div class="bio-age">Age 36</div><p>I fell in love with the love of my life.</p></div>
+        <div class="bio-item"><div class="bio-age">Age 37</div><p>I proposed. She said yes. :)</p></div>
+        <div class="bio-item"><div class="bio-age">Age 38</div><p>Christ moved in my life and I accepted Jesus. I hiked the Continental Divide Trail (to stay in integrity, I only hiked 2,400 miles — I missed 400 when I hurt my knee, and I still intend to do those to honor my word to myself). I am here to serve.</p></div>
       </div>
     </div>
     <div class="bio-close reveal">
@@ -679,7 +684,7 @@
   <div class="wrap quote-inner">
     <img class="quote-portrait" src="assets/media/mike-about.jpg" alt="Mike Posner" referrerpolicy="no-referrer" onerror="this.style.display='none'">
     <div class="quote-text">
-      <blockquote class="serif">"True happiness comes from growth."</blockquote>
+      <blockquote class="serif">"Beginnings always hide themselves in ends."</blockquote>
       <cite>— Mike Posner</cite>
     </div>
   </div>
@@ -732,15 +737,16 @@
   </div>
 </section>
 
-<!-- A REMINDER (closing band) -->
+<!-- A REMINDER (closing band — links to its own page) -->
 <section class="band reminder reveal">
   <div class="reminder-glow"></div>
   <div class="wrap inner">
     <img class="rd-badge" src="assets/mp-icon-circ-wht.png" alt="" aria-hidden="true">
     <p class="eyebrow">A Reminder…</p>
-    <p class="reminder-lead">If you're reading this, <strong>congratulations</strong> — you've reached the end of my website.</p>
-    <p class="reminder-body">It also means you are a blessed human, and I hope you have a blessed day and bless others in the process. Remember: <em>you matter. You are joy. You are faith.</em> If you're going through a tough moment right now, that just means life is preparing you for something <strong>more</strong>.</p>
-    <p class="reminder-sign">Keep going.</p>
+    <p class="reminder-lead">Before you go — a note from Mike, just for you.</p>
+    <a href="reminder.html" class="reminder-cta">Read it
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
   </div>
 </section>
 
