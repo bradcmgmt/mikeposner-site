@@ -1018,9 +1018,9 @@
 
   // shared music link — change MUSIC_URL once to update the nav, footer, and the "Listen" button together
   (function(){
-    var MUSIC_URL = 'https://mikeposner.lnk.to/IWBTI?utm_source=ig&utm_medium=social&utm_content=link_in_bio';
+    var MUSIC_URL = 'music.html';
     document.querySelectorAll('.js-music-link').forEach(function(a){
-      a.setAttribute('href', MUSIC_URL); a.setAttribute('target','_blank'); a.setAttribute('rel','noopener');
+      a.setAttribute('href', MUSIC_URL); a.removeAttribute('target'); a.removeAttribute('rel');
     });
   })();
 

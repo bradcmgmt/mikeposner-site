@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music — Mike Posner</title>
+<meta name="description" content="Every Mike Posner release — albums, mixtapes, and spoken-word records — on Spotify, Apple Music, YouTube, and Amazon.">
+<link rel="icon" href="assets/mp-icon-circ-blk.png">
+<style>
+  @font-face{font-family:'VC Garamond Condensed';src:url('assets/fonts/VCGaramondCondensed-Regular.otf') format('opentype');font-weight:300 400;font-style:normal;font-display:swap}
+  @font-face{font-family:'VC Garamond Condensed';src:url('assets/fonts/VCGaramondCondensed-Medium.otf') format('opentype');font-weight:500 700;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+  @font-face{font-family:'Metropolis';src:url('assets/fonts/metropolis-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+  :root{--ink:#1d2433;--ink-soft:#5a6678;--sky:#aebbe0;--sky-2:#cdd6ef;--sky-3:#e7ecf8;--paper:#f4f6fc;--white:#fff;--accent:#3a5bd9;--accent-deep:#22357f;--line:rgba(29,36,51,.12)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Metropolis',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;
+    background:linear-gradient(180deg,#c4cef0 0%,#dce2f6 14%,var(--paper) 34%)}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  /* nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(244,246,252,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand .ico{width:38px;height:38px;border-radius:50%}
+  .brand .script{height:22px;width:auto}
+  .nav-links{display:flex;align-items:center;gap:26px;flex:1 1 auto;justify-content:center}
+  .nav-links a{font-size:.92rem;font-weight:500;color:var(--ink-soft);transition:color .2s;position:relative}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.active{color:var(--accent-deep);font-weight:600}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;padding:11px 22px;border-radius:100px;transition:transform .2s,box-shadow .2s,background .2s}
+  .btn-solid{background:var(--accent);color:#fff;box-shadow:0 14px 30px -16px rgba(58,91,217,.8)}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 20px 40px -18px rgba(58,91,217,.9)}
+  /* hero */
+  .hero{text-align:center;padding:clamp(54px,8vw,86px) 0 clamp(34px,5vw,52px);position:relative;overflow:hidden}
+  .hero .watermark{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:min(560px,90vw);opacity:.06;pointer-events:none}
+  .hero-inner{position:relative;z-index:1}
+  .eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+  .hero h1{font-family:'VC Garamond Condensed',Georgia,serif;font-weight:600;letter-spacing:-.015em;font-size:clamp(2.8rem,8vw,5.6rem);line-height:.98;color:var(--ink)}
+  .hero p{color:var(--ink-soft);font-size:clamp(1.02rem,2vw,1.16rem);line-height:1.6;max-width:50ch;margin:20px auto 0}
+  /* discography grid */
+  .disc{padding:clamp(20px,4vw,40px) 0 clamp(70px,9vw,110px)}
+  .disc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:clamp(18px,2.4vw,28px)}
+  .album{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;
+    box-shadow:0 20px 48px -34px rgba(34,53,127,.5);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s;
+    opacity:0;transform:translateY(16px)}
+  .album.in{opacity:1;transform:none}
+  .album:hover{transform:translateY(-5px);box-shadow:0 36px 66px -34px rgba(34,53,127,.6)}
+  .album-art{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--sky)}
+  .album-art img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+  .album:hover .album-art img{transform:scale(1.055)}
+  .album-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(15,23,50,.18));opacity:0;transition:opacity .3s}
+  .album:hover .album-art::after{opacity:1}
+  .album-body{padding:17px 18px 19px;display:flex;flex-direction:column;flex:1}
+  .album-title{font-family:'VC Garamond Condensed',Georgia,serif;font-weight:600;font-size:1.5rem;line-height:1.08;color:var(--ink)}
+  .album-meta{font-size:.82rem;color:var(--ink-soft);margin:4px 0 15px}
+  .album-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+  .plink{font-size:.78rem;font-weight:600;color:var(--accent-deep);background:var(--sky-3);border:1px solid var(--line);
+    padding:7px 13px;border-radius:100px;transition:background .2s,color .2s,border-color .2s,transform .15s}
+  .plink:hover{transform:translateY(-1px);border-color:transparent;color:#fff;background:var(--accent)}
+  .plink--spotify:hover{background:#1DB954}
+  .plink--apple:hover{background:#fa2d48}
+  .plink--youtube:hover{background:#FF0000}
+  .plink--amazon:hover{background:#1ad1ff;color:var(--ink)}
+  /* footer */
+  footer{background:var(--ink);color:rgba(255,255,255,.66)}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:34px 0}
+  .foot .script{height:30px;width:auto;opacity:.95}
+  .foot .socials{display:flex;gap:12px}
+  .foot .socials a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;color:#fff;transition:all .25s}
+  .foot .socials a:hover{background:#fff;color:var(--ink);transform:translateY(-3px)}
+  .foot .socials svg{width:17px;height:17px;fill:currentColor}
+  .foot-copy{width:100%;border-top:1px solid rgba(255,255,255,.12);padding:18px 0 32px;font-size:.82rem;color:rgba(255,255,255,.5);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  @media(max-width:860px){.nav-links{display:none}}
+  @media(prefers-reduced-motion:reduce){.album{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="Mike Posner — home">
+      <img class="ico" src="assets/mp-icon-circ-blk.png" alt="">
+      <img class="script" src="assets/mp-logo-script-blk.png" alt="Mike Posner">
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#tours">Tours</a>
+      <a class="active" href="music.html">Music</a>
+      <a href="index.html#adventure">Adventure</a>
+      <a href="index.html#story">About</a>
+      <a href="https://mike-posner.myshopify.com/" target="_blank" rel="noopener">Shop</a>
+    </nav>
+    <a class="btn btn-solid" href="index.html#contact">Book Mike</a>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="watermark" src="assets/mp-icon-blk.png" alt="" aria-hidden="true">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Listen</p>
+    <h1>The Music.</h1>
+    <p>Every album, mixtape, and spoken-word record — in one place. Stream wherever you listen.</p>
+  </div>
+</section>
+
+<main class="disc">
+  <div class="wrap">
+    <div class="disc-grid">
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/the-beginning.jpg" alt="The Beginning — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">The Beginning</h3>
+          <p class="album-meta">Studio Album · 2025</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/3Uy5319iFlPvzKtUGCwUrQ" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/the-beginning/1791782864" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/playlist?list=OLAK5uy_l__KP7oE2HZilScmj4VZ2XkRHbeKMUL_o" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/albums/B0DTL9JJVT" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/mansionz-2.jpg" alt="Mansionz 2 — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">Mansionz 2</h3>
+          <p class="album-meta">Mansionz · Posner &amp; blackbear · 2023</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/4AZQAqrzZm1jyRuEIrjGHC" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/mansionz-2/1713196392" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/playlist?list=OLAK5uy_kbVRh1rMBEtfuvYz3zOQq32E7WRN6cqDk" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://www.amazon.com/dp/B0CLNMPSKZ" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/operation-wake-up.jpg" alt="Operation: Wake Up — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">Operation: Wake Up</h3>
+          <p class="album-meta">Studio Album · 2020</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/6YGWlDpe9n3spk3akJd0WN" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/operation-wake-up/1543841876" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/playlist?list=OLAK5uy_keZheiDvBqs0BXb73JgjAfwCGIfTLLzGw" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/albums/B08PY4Z199" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/keep-going.jpg" alt="Keep Going — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">Keep Going</h3>
+          <p class="album-meta">Mixtape · 2019</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/7LMPvMtvi02jBM47lrBEMk" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/keep-going/1481602491" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/search?q=Mike%20Posner%20Keep%20Going" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://amazon.com/music/player/albums/B07YMTD99Q" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/a-real-good-kid.jpg" alt="A Real Good Kid — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">A Real Good Kid</h3>
+          <p class="album-meta">Studio Album · 2019</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/4Ud6qdjOiGsrryFeZOVmkT" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/a-real-good-kid/1449093091" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/playlist?list=OLAK5uy_kqvtthcQA-WV2Uls3lXJrN-Jhd5q-H2Qs" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/albums/B07MT4Z2N1" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/tear-drops-and-balloons.jpg" alt="Tear Drops and Balloons — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">Tear Drops and Balloons</h3>
+          <p class="album-meta">Spoken Word Album · 2018</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/0Neg41qXHsWHsA6Q7KY44P" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/tear-drops-and-balloons/1353591745" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/playlist?list=OLAK5uy_nUwZupFrVtgE-DHv0-reFcXmT3DfvZKOs" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/search/Mike%20Posner%20Tear%20Drops%20and%20Balloons" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/i-was-born-in-detroit.jpg" alt="i was born in detroit — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">i was born in detroit</h3>
+          <p class="album-meta">Spoken Word Album · 2018</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/6ONK4W1seR3xnhK1SHtkwi" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/i-was-born-in-detroit-on-a-very-very-very-very-very/1442974727" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/playlist?list=OLAK5uy_kmLTho9yzajjZDvM3aMUnSXNrMpCyvjs0" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/albums/B0794RP8VJ" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/mansionz.jpg" alt="mansionz — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">mansionz</h3>
+          <p class="album-meta">Mansionz · Posner &amp; blackbear · 2017</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/5WS1g0cKtjfK6eDoSLdv7d" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/mansionz/1440892382" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/search?q=mansionz%20Mike%20Posner%20blackbear" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/search/mansionz%20Mike%20Posner%20blackbear" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/at-night-alone.jpg" alt="At Night, Alone. — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">At Night, Alone.</h3>
+          <p class="album-meta">Studio Album · 2016</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/3V6dvka55d13dxFB3Mz9eV" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/at-night-alone/1529026302" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/playlist?list=OLAK5uy_mpHvm9FFIarmK9N-5iX0I1MxW-aKcIV6M" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/albums/B08GWMQXNZ" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/the-layover.jpg" alt="The Layover — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">The Layover</h3>
+          <p class="album-meta">Mixtape · 2011</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/49XLJ6XYJj7j2m1NWchu30" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/the-layover/1305544105" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/search?q=Mike%20Posner%20The%20Layover" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/albums/B07BN7MZ4X" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/31-minutes-to-takeoff.jpg" alt="31 Minutes to Takeoff — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">31 Minutes to Takeoff</h3>
+          <p class="album-meta">Studio Album · 2010</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/2nnIlWcriIqcJtjduWcTRl" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/31-minutes-to-takeoff/383458566" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/playlist?list=OLAK5uy_ms90ctp0RlDj2_iZ0xX-4y_g12k5CXULY" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/albums/B003Y1ZUCU" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/one-foot-out-the-door.jpg" alt="One Foot Out the Door — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">One Foot Out the Door</h3>
+          <p class="album-meta">Mixtape · 2009</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/0oxxs8JLFwTbbTzSf0wrZI" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/one-foot-out-the-door/1258303649" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/search?q=Mike%20Posner%20One%20Foot%20Out%20the%20Door" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/albums/B079ZY1F8J" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+      <article class="album">
+        <div class="album-art"><img src="assets/media/albums/a-matter-of-time.jpg" alt="A Matter of Time — album art" loading="lazy"></div>
+        <div class="album-body">
+          <h3 class="album-title">A Matter of Time</h3>
+          <p class="album-meta">Mixtape · 2009</p>
+          <div class="album-links"><a class="plink plink--spotify" href="https://open.spotify.com/album/3YqbqVW4Rz8DCPxL2WBCvc" target="_blank" rel="noopener">Spotify</a><a class="plink plink--apple" href="https://music.apple.com/us/album/a-matter-of-time/1357004981" target="_blank" rel="noopener">Apple Music</a><a class="plink plink--youtube" href="https://music.youtube.com/search?q=Mike%20Posner%20A%20Matter%20of%20Time" target="_blank" rel="noopener">YouTube</a><a class="plink plink--amazon" href="https://music.amazon.com/search/Mike%20Posner%20A%20Matter%20of%20Time" target="_blank" rel="noopener">Amazon</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="index.html"><img class="script" src="assets/mp-logo-script-wht.png" alt="Mike Posner"></a>
+      <div class="socials">
+        <a href="https://open.spotify.com/artist/2KsP6tYLJlTBvSUxnwlVWa" target="_blank" rel="noopener" aria-label="Spotify"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.6 14.4a.6.6 0 01-.9.2c-2.4-1.5-5.5-1.8-9.1-1a.6.6 0 11-.3-1.2c3.9-.9 7.4-.5 10.1 1.1.3.2.4.6.2.9zm1.2-2.7a.8.8 0 01-1 .3c-2.8-1.7-7-2.2-10.2-1.2a.8.8 0 11-.5-1.5c3.7-1.1 8.3-.6 11.5 1.4.3.2.5.7.2 1zm.1-2.8C14.6 8.9 9.2 8.7 6 9.7a.9.9 0 11-.5-1.7c3.7-1.1 9.6-.9 13.4 1.3a.9.9 0 11-.9 1.6z"/></svg></a>
+        <a href="https://www.instagram.com/mikeposner/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .4 1.4.9.5.4.7.8.9 1.4.1.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.4 1-.9 1.4-.4.5-.8.7-1.4.9-.4.1-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.4-1.4-.9-.5-.4-.7-.8-.9-1.4-.1-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.4-1 .9-1.4.4-.5.8-.7 1.4-.9.4-.1 1-.3 2.2-.4 1.3-.1 1.7-.1 4.9-.1zm0 8.1a3.2 3.2 0 100 6.4 3.2 3.2 0 000-6.4zm6.2-.4a1.1 1.1 0 11-2.3 0 1.1 1.1 0 012.3 0z"/></svg></a>
+        <a href="https://www.youtube.com/mikeposner" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.5c-.1-1-.5-1.7-1.1-2.1-.9-.5-4.3-.5-9.9-.5s-9 0-9.9.5C1.5 5.8 1.1 6.5 1 7.5.9 8.6.9 10 .9 12s0 3.4.1 4.5c.1 1 .5 1.7 1.1 2.1.9.5 4.3.5 9.9.5s9 0 9.9-.5c.6-.4 1-1.1 1.1-2.1.1-1.1.1-2.5.1-4.5s0-3.4-.1-4.5zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-copy"><span>&copy; 2026 Mike Posner. All rights reserved.</span><span>Where music meets message.</span></div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+    document.querySelectorAll(".album").forEach(function(el,i){el.style.transitionDelay=(Math.min(i,8)*40)+"ms";io.observe(el);});
+  })();
+</script>
+</body>
+</html>
