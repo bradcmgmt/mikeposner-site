@@ -150,7 +150,7 @@
   .display-head.hi-mike{font-family:'VC Garamond Condensed',Georgia,serif;font-weight:600;color:var(--accent-deep);font-size:clamp(2.4rem,7vw,4.8rem);line-height:1;letter-spacing:-.012em;text-shadow:0 6px 26px rgba(28,40,80,.14)}
   .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;margin-top:38px}
   .story-copy{align-self:center}
-  .story-copy p{color:var(--ink-soft);font-size:1.18rem;line-height:1.6;margin-bottom:18px;max-width:54ch}
+  .story-copy p{color:var(--ink-soft);font-size:1.22rem;line-height:1.65;margin-bottom:20px;max-width:54ch}
   .story-copy p.lead{color:var(--ink);font-size:1.45rem;line-height:1.5;font-weight:500}
   .story-photos{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .photo-card{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:1/1;position:relative;background:var(--sky)}
@@ -241,9 +241,10 @@
   .bit-credit{display:inline-block;margin-top:22px;font-size:.78rem;letter-spacing:.04em;color:var(--ink-soft);opacity:.7;transition:opacity .2s,color .2s}
   .bit-credit:hover{opacity:1;color:var(--accent)}
   /* ===== EDC VIDEO EMBED ===== */
-  .edc{background:linear-gradient(180deg,#18285c 0%,#ffffff 90%);padding-top:clamp(34px,4.5vw,60px);padding-bottom:clamp(40px,5vw,68px)}
-  .edc-frame{position:relative;max-width:900px;margin:0 auto;border-radius:20px;overflow:hidden;
-    background:#000;aspect-ratio:16/9;box-shadow:0 44px 100px -44px rgba(0,0,0,.85)}
+  .edc{background:linear-gradient(180deg,#1b2b5e 0%,#0f1a3e 100%);padding-top:clamp(34px,4.5vw,60px);padding-bottom:clamp(40px,5vw,68px)}
+  .edc .wrap{max-width:1340px}
+  .edc-frame{position:relative;max-width:none;margin:0 auto;border-radius:20px;overflow:hidden;
+    background:#000;aspect-ratio:2.7/1;box-shadow:0 44px 100px -44px rgba(0,0,0,.85)}
   .edc-frame video{width:100%;height:100%;object-fit:cover;display:block}
   .edc-sound{position:absolute;bottom:16px;right:16px;display:inline-flex;align-items:center;gap:8px;
     padding:9px 15px;border-radius:100px;border:1px solid rgba(255,255,255,.45);
@@ -251,7 +252,7 @@
     font-weight:600;cursor:pointer;transition:background .2s,transform .2s}
   .edc-sound:hover{background:rgba(0,0,0,.72);transform:translateY(-1px)}
   .edc-sound svg{width:17px;height:17px}
-  .edc-caption{text-align:center;margin-top:20px;color:var(--ink-soft);
+  .edc-caption{text-align:center;margin-top:20px;color:rgba(255,255,255,.72);
     font-size:.82rem;letter-spacing:.06em;text-transform:uppercase}
   @media(max-width:680px){
     .show{grid-template-columns:1fr;gap:12px;text-align:left}
@@ -277,10 +278,22 @@
   .adv-head h2{font-size:clamp(2.4rem,6vw,4.2rem);margin-bottom:18px}
   .adv-head p{color:var(--ink-soft);font-size:1.08rem}
   .adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .adv-card{position:relative;border-radius:22px;overflow:hidden;min-height:440px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;box-shadow:var(--shadow)}
-  .adv-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-  .adv-card:hover img{transform:scale(1.07)}
-  .adv-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,23,50,.05) 30%,rgba(15,23,50,.85) 100%)}
+  .adv-card{position:relative;min-height:440px;perspective:1500px}
+  .adv-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.1,.25,1)}
+  .adv-card:hover .adv-inner,.adv-card.playing .adv-inner{transform:rotateY(180deg)}
+  .adv-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+  .adv-front{display:flex;flex-direction:column;justify-content:flex-end;color:#fff}
+  .adv-front img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .adv-front::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,23,50,.05) 30%,rgba(15,23,50,.85) 100%)}
+  .adv-back{transform:rotateY(180deg);background:#0a1020}
+  .adv-video{position:absolute;inset:0;background-size:cover;background-position:center;display:grid;place-items:center;cursor:pointer;text-decoration:none}
+  .adv-video::after{content:"";position:absolute;inset:0;background:rgba(10,16,32,.44);transition:background .25s}
+  .adv-card:hover .adv-video::after{background:rgba(10,16,32,.26)}
+  .adv-play{position:relative;z-index:1;display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.82);backdrop-filter:blur(4px);transition:transform .25s}
+  .adv-card:hover .adv-play{transform:scale(1.07)}
+  .adv-play svg{width:24px;height:24px;margin-left:3px;fill:#fff}
+  .adv-vlabel{position:absolute;left:0;right:0;bottom:22px;z-index:1;text-align:center;color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.92}
+  .adv-iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .adv-card .body{position:relative;z-index:2;padding:28px}
   .adv-card .yr{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;opacity:.9;margin-bottom:8px}
   .adv-card h3{font-size:1.5rem;line-height:1.1}
@@ -540,11 +553,11 @@
 <section class="band story" id="story">
   <div class="wrap">
     <div class="center reveal">
-      <h2 class="display-head hi-mike">Hi, I'm Mike.</h2>
+      <h2 class="display-head hi-mike">hi, I'm mike…</h2>
     </div>
     <div class="story-grid">
       <div class="story-copy reveal">
-        <p class="lead">My name is Mike Posner, and I'm an artist, speaker, endurance athlete, lover of broccoli sprouts, disciple of Christ, work in progress, spiritual teacher, spiritual student — and in my best moments, a carrier of light to others.</p>
+        <p>My name is Mike Posner, and I'm an artist, speaker, endurance athlete, lover of broccoli sprouts, disciple of Christ, work in progress, spiritual teacher, spiritual student — and in my best moments, a carrier of light to others.</p>
         <p>My mission in this life is to be a blessing, love people, and have an absolute ball sharing the gifts God has given me. I've had an interesting life, but I'll make it short and sweet.</p>
       </div>
       <div class="story-photos reveal">
@@ -568,7 +581,6 @@
       <span class="role"><span class="dot"></span>Spiritual Teacher</span>
     </div>
     <div class="bio reveal">
-      <span class="bio-label eyebrow">My life, age by age</span>
       <div class="bio-timeline">
         <div class="bio-item"><div class="bio-age">Age 0</div><p>Born in Detroit on a very, very, very, very, very, very cold day.</p></div>
         <div class="bio-item"><div class="bio-age">Age 8</div><p>Already a sad, lonely kid. Started rapping.</p></div>
@@ -606,7 +618,7 @@
 <section class="band streams reveal">
   <div class="wrap">
     <div class="big"><small>Over</small>17 Billion</div>
-    <p>Streams to date — and millions of podcast listeners who followed his Walk and Everest climb in real time.</p>
+    <p>Streams to date — and millions of followers inspired by his walk across America and his climb of Mount Everest.</p>
     <a href="https://mikeposner.lnk.to/IWBTI?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener" class="btn btn-ghost-white js-music-link">Listen</a>
   </div>
 </section>
@@ -641,24 +653,6 @@
   </div>
 </section>
 
-<!-- TOURS -->
-<section class="band tours" id="tours">
-  <div class="wrap">
-    <div class="tours-head reveal">
-      <h2>Tours</h2>
-      <p>Get updates on new shows, new music &amp; more</p>
-    </div>
-    <div class="tour-list reveal" id="tourList" aria-live="polite">
-      <div class="tour-status">Loading tour dates…</div>
-    </div>
-    <div class="tours-foot reveal">
-      <span>Don't see a show near you?</span>
-      <a href="#contact" class="btn btn-solid js-book">Book Mike to Perform</a>
-    </div>
-    <a class="bit-credit reveal" href="https://www.bandsintown.com/a/274407?came_from=267" target="_blank" rel="noopener">Live dates powered by Bandsintown</a>
-  </div>
-</section>
-
 <!-- EDC VIDEO -->
 <section class="band edc">
   <div class="wrap">
@@ -674,6 +668,24 @@
       </button>
     </div>
     <p class="edc-caption reveal">"Cooler Than Me" — live at EDC Las Vegas</p>
+  </div>
+</section>
+
+<!-- TOURS -->
+<section class="band tours" id="tours">
+  <div class="wrap">
+    <div class="tours-head reveal">
+      <h2>Tours</h2>
+      <p>Get updates on new shows, new music &amp; more</p>
+    </div>
+    <div class="tour-list reveal" id="tourList" aria-live="polite">
+      <div class="tour-status">Loading tour dates…</div>
+    </div>
+    <div class="tours-foot reveal">
+      <span>Don't see a show near you?</span>
+      <a href="#contact" class="btn btn-solid js-book">Book Mike to Perform</a>
+    </div>
+    <a class="bit-credit reveal" href="https://www.bandsintown.com/a/274407?came_from=267" target="_blank" rel="noopener">Live dates powered by Bandsintown</a>
   </div>
 </section>
 
@@ -695,31 +707,64 @@
     <div class="adv-head reveal">
       <p class="eyebrow">Adventure</p>
       <h2>The journey on foot.</h2>
-      <p>Beyond his chart-topping music, Mike is an endurance athlete. He walked across the United States in 2019 and summited Mount Everest in 2021 — and he's back on foot for a second crossing along the Continental Divide Trail.</p>
+      <p>Beyond his chart-topping music, Mike is an endurance athlete. He walked across the United States in 2019, summited Mount Everest in 2021, and finished the Continental Divide Trail in 2025.</p>
     </div>
     <div class="adv-grid">
-      <a class="adv-card reveal" href="https://www.youtube.com/watch?v=uXeZNXdu-gs" target="_blank" rel="noopener">
-        <img src="assets/media/mask-group.png" alt="Walk Across America" referrerpolicy="no-referrer">
-        <div class="body">
-          <div class="yr">2019</div>
-          <h3>Walk Across America</h3>
-          <p class="tagline">2,800 miles, coast to coast, on foot.</p>
-        </div>
-      </a>
-      <a class="adv-card reveal" href="https://www.youtube.com/watch?v=sdfgV-ZCnYw" target="_blank" rel="noopener">
-        <img src="assets/media/mask-group-1.png" alt="Summiting Mount Everest" referrerpolicy="no-referrer">
-        <div class="body">
-          <div class="yr">2021</div>
-          <h3>Summiting Mount Everest</h3>
-          <p class="tagline">Standing on top of the world.</p>
-        </div>
-      </a>
       <article class="adv-card reveal">
-        <img src="assets/media/mask-group-2.png" alt="Continental Divide Trail" referrerpolicy="no-referrer">
-        <div class="body">
-          <div class="yr">2025</div>
-          <h3>The Continental Divide Trail</h3>
-          <p class="tagline">3,000 miles, Mexico to Canada.</p>
+        <div class="adv-inner">
+          <div class="adv-face adv-front">
+            <img src="assets/media/mask-group.png" alt="Walk Across America" referrerpolicy="no-referrer">
+            <div class="body">
+              <div class="yr">2019</div>
+              <h3>Walk Across America</h3>
+              <p class="tagline">2,800 miles, coast to coast, on foot.</p>
+            </div>
+          </div>
+          <div class="adv-face adv-back">
+            <div class="adv-video" data-yt="uXeZNXdu-gs" role="button" tabindex="0" aria-label="Play Walk Across America video"
+                 style="background-image:url('https://i.ytimg.com/vi/uXeZNXdu-gs/hqdefault.jpg')">
+              <span class="adv-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="adv-vlabel">Watch on YouTube</span>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="adv-card reveal">
+        <div class="adv-inner">
+          <div class="adv-face adv-front">
+            <img src="assets/media/mask-group-1.png" alt="Summiting Mount Everest" referrerpolicy="no-referrer">
+            <div class="body">
+              <div class="yr">2021</div>
+              <h3>Summiting Mount Everest</h3>
+              <p class="tagline">Standing on top of the world.</p>
+            </div>
+          </div>
+          <div class="adv-face adv-back">
+            <div class="adv-video" data-yt="sdfgV-ZCnYw" role="button" tabindex="0" aria-label="Play Summiting Mount Everest video"
+                 style="background-image:url('https://i.ytimg.com/vi/sdfgV-ZCnYw/hqdefault.jpg')">
+              <span class="adv-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="adv-vlabel">Watch on YouTube</span>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="adv-card reveal">
+        <div class="adv-inner">
+          <div class="adv-face adv-front">
+            <img src="assets/media/mask-group-2.png" alt="Continental Divide Trail" referrerpolicy="no-referrer">
+            <div class="body">
+              <div class="yr">2025</div>
+              <h3>The Continental Divide Trail</h3>
+              <p class="tagline">3,000 miles, Mexico to Canada.</p>
+            </div>
+          </div>
+          <div class="adv-face adv-back">
+            <a class="adv-video" href="https://www.instagram.com/reel/DSIVTq8kdHr/" target="_blank" rel="noopener" aria-label="Watch the Continental Divide Trail reel on Instagram"
+               style="background-image:url('assets/media/mask-group-2.png')">
+              <span class="adv-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="adv-vlabel">Watch on Instagram</span>
+            </a>
+          </div>
         </div>
       </article>
     </div>
@@ -1013,6 +1058,7 @@
     document.querySelectorAll('.js-reading').forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); open(); }); });
     modal.querySelectorAll('[data-rd-close]').forEach(function(el){ el.addEventListener('click', close); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')) close(); });
+    if(window.location.hash === '#reading'){ setTimeout(open, 650); }   // opened from the Music page nav
   })();
 
   // shared music link — change MUSIC_URL once to update the nav, footer, and the "Listen" button together
@@ -1020,6 +1066,22 @@
     var MUSIC_URL = 'music.html';
     document.querySelectorAll('.js-music-link').forEach(function(a){
       a.setAttribute('href', MUSIC_URL); a.removeAttribute('target'); a.removeAttribute('rel');
+    });
+  })();
+
+  // adventure cards — flip to the video on hover; click the YouTube ones to play inline
+  (function(){
+    document.querySelectorAll('.adv-video[data-yt]').forEach(function(f){
+      function play(){
+        var card = f.closest('.adv-card'); if(card) card.classList.add('playing');
+        var ifr = document.createElement('iframe');
+        ifr.src = 'https://www.youtube.com/embed/' + f.getAttribute('data-yt') + '?autoplay=1&rel=0&playsinline=1';
+        ifr.setAttribute('allow','autoplay; encrypted-media; picture-in-picture; fullscreen');
+        ifr.setAttribute('allowfullscreen',''); ifr.setAttribute('title','Mike Posner video'); ifr.className = 'adv-iframe';
+        f.parentNode.replaceChild(ifr, f);
+      }
+      f.addEventListener('click', play);
+      f.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); play(); } });
     });
   })();
 
