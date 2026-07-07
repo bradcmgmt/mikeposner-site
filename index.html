@@ -95,6 +95,15 @@
   header:not(.scrolled) .nav-cta.btn-solid{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.65);backdrop-filter:blur(6px);box-shadow:none}
   .menu-btn{display:none;background:none;border:0;cursor:pointer;padding:8px;color:#fff}
   header.scrolled .menu-btn{color:var(--ink)}
+  /* over a dark section, the header fades to the transparent/white treatment (like the top of the page) */
+  header.over-dark{background:linear-gradient(180deg,rgba(11,18,46,.5),rgba(11,18,46,0));backdrop-filter:none;box-shadow:none;border-bottom-color:transparent}
+  header.over-dark .nav-links a{color:rgba(255,255,255,.92)}
+  header.over-dark .nav-links a:hover{color:#fff}
+  header.over-dark .brand-light{display:block}
+  header.over-dark .brand-dark{display:none}
+  header.over-dark .menu-btn{color:#fff}
+  header.over-dark a.nav-cta.btn-solid{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.65);backdrop-filter:blur(6px);color:#fff}
+  header.over-dark a.nav-cta.btn-solid:hover{background:rgba(255,255,255,.28)}
   .menu-btn svg{width:28px;height:28px}
 
   /* HERO */
@@ -241,20 +250,20 @@
   .bit-credit{display:inline-block;margin-top:22px;font-size:.78rem;letter-spacing:.04em;color:var(--ink-soft);opacity:.7;transition:opacity .2s,color .2s}
   .bit-credit:hover{opacity:1;color:var(--accent)}
   /* ===== EDC VIDEO EMBED ===== */
-  .edc{background:linear-gradient(180deg,#1b2b5e 0%,#0f1a3e 100%);padding-top:clamp(34px,4.5vw,60px);padding-bottom:clamp(40px,5vw,68px)}
-  .edc .wrap{max-width:1340px}
-  .edc-frame{position:relative;max-width:none;margin:0 auto;border-radius:20px;overflow:hidden;
-    background:#000;aspect-ratio:2.7/1;box-shadow:0 44px 100px -44px rgba(0,0,0,.85)}
+  .edc{background:#000;padding:0}
+  .edc-frame{position:relative;width:100%;height:clamp(460px,84vh,900px);overflow:hidden;background:#000}
   .edc-frame video{width:100%;height:100%;object-fit:cover;display:block}
-  .edc-sound{position:absolute;bottom:16px;right:16px;display:inline-flex;align-items:center;gap:8px;
+  .edc-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(8,13,32,.6) 0%,rgba(8,13,32,0) 24%)}
+  .edc-sound{position:absolute;bottom:clamp(16px,2.2vw,28px);right:clamp(18px,3vw,46px);z-index:2;display:inline-flex;align-items:center;gap:8px;
     padding:9px 15px;border-radius:100px;border:1px solid rgba(255,255,255,.45);
     background:rgba(0,0,0,.45);backdrop-filter:blur(6px);color:#fff;font-family:inherit;font-size:.82rem;
     font-weight:600;cursor:pointer;transition:background .2s,transform .2s}
   .edc-sound:hover{background:rgba(0,0,0,.72);transform:translateY(-1px)}
   .edc-sound svg{width:17px;height:17px}
-  .edc-caption{text-align:center;margin-top:20px;color:rgba(255,255,255,.72);
+  .edc-caption{position:absolute;left:clamp(18px,3vw,46px);bottom:clamp(16px,2.2vw,28px);z-index:2;margin:0;color:rgba(255,255,255,.9);
     font-size:.82rem;letter-spacing:.06em;text-transform:uppercase}
   @media(max-width:680px){
+    .edc-frame{height:auto;aspect-ratio:16/9}
     .show{grid-template-columns:1fr;gap:12px;text-align:left}
     .show .actions{flex-wrap:wrap}
     .show .actions .btn,.show .actions .pill-link{flex:1;justify-content:center;text-align:center}
@@ -655,20 +664,19 @@
 </section>
 
 <!-- EDC VIDEO -->
-<section class="band edc">
-  <div class="wrap">
-    <div class="edc-frame reveal">
-      <video id="edcVideo" muted loop playsinline webkit-playsinline="true" preload="metadata"
-             poster="assets/media/edc-poster.jpg" aria-label="Mike Posner — Cooler Than Me, live at EDC Las Vegas">
-        <source src="assets/media/edc-cooler-than-me.mp4" type="video/mp4">
-      </video>
-      <button class="edc-sound" id="edcSound" type="button" aria-label="Toggle sound">
-        <svg class="ic-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-        <svg class="ic-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>
-        <span class="edc-sound-label">Tap for sound</span>
-      </button>
-    </div>
-    <p class="edc-caption reveal">"Cooler Than Me" — live at EDC Las Vegas</p>
+<section class="band edc band-dark">
+  <div class="edc-frame">
+    <video id="edcVideo" autoplay muted loop playsinline webkit-playsinline="true" preload="auto" disablepictureinpicture
+           poster="assets/media/edc-poster.jpg" aria-label="Mike Posner — Cooler Than Me, live at EDC Las Vegas">
+      <source src="assets/media/edc-cooler-than-me.mp4" type="video/mp4">
+    </video>
+    <div class="edc-scrim"></div>
+    <p class="edc-caption">"Cooler Than Me" — live at EDC Las Vegas</p>
+    <button class="edc-sound" id="edcSound" type="button" aria-label="Toggle sound">
+      <svg class="ic-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      <svg class="ic-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>
+      <span class="edc-sound-label">Tap for sound</span>
+    </button>
   </div>
 </section>
 
@@ -1146,23 +1154,30 @@
     });
   })();
 
-  // EDC video — autoplay (muted) when scrolled into view, pause when out; tap for sound
+  // EDC video — robust muted autoplay + loop (same approach as the hero); tap for sound
   (function(){
     var v = document.getElementById('edcVideo');
     var btn = document.getElementById('edcSound');
     if(!v) return;
-    v.muted = true;
-    function play(){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+    v.muted = true; v.defaultMuted = true; v.setAttribute('muted','');
+    function inView(){ var r = v.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }
+    function tryPlay(){ try{ var p = v.play(); if(p && p.catch) p.catch(function(){}); }catch(e){} }
+    ['loadeddata','canplay','canplaythrough'].forEach(function(e){ v.addEventListener(e, function(){ if(inView()) tryPlay(); }); });
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden && inView()) tryPlay(); });
+    var gestures = ['touchstart','touchend','pointerdown','click','keydown'];
+    function kick(){ if(inView()) tryPlay(); }
+    gestures.forEach(function(e){ document.addEventListener(e, kick, {passive:true}); });
+    // play when in view, pause when off-screen (saves bandwidth)
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if(e.isIntersecting) play(); else v.pause(); });
-      }, {threshold:0.45}).observe(v);
-    } else { play(); }
+        entries.forEach(function(e){ if(e.isIntersecting) tryPlay(); else v.pause(); });
+      }, {threshold:0.3}).observe(v);
+    } else { tryPlay(); }
     if(btn){
       var icM = btn.querySelector('.ic-muted'), icS = btn.querySelector('.ic-sound'), lbl = btn.querySelector('.edc-sound-label');
       btn.addEventListener('click', function(){
         v.muted = !v.muted;
-        if(!v.muted) play();
+        if(!v.muted) tryPlay();
         icM.style.display = v.muted ? '' : 'none';
         icS.style.display = v.muted ? 'none' : '';
         lbl.textContent = v.muted ? 'Tap for sound' : 'Sound on';
@@ -1171,7 +1186,17 @@
   })();
 
   const hdr = document.getElementById('hdr');
-  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 30);
+  const darkBands = [].slice.call(document.querySelectorAll('.band-dark'));
+  const onScroll = () => {
+    hdr.classList.toggle('scrolled', window.scrollY > 30);
+    // header adapts: transparent/white when a dark section sits behind it, solid otherwise
+    var mid = hdr.offsetHeight * 0.5, overDark = false;
+    for(var i = 0; i < darkBands.length; i++){
+      var r = darkBands[i].getBoundingClientRect();
+      if(r.top <= mid && r.bottom > mid){ overDark = true; break; }
+    }
+    hdr.classList.toggle('over-dark', overDark);
+  };
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
   const menuBtn = document.getElementById('menuBtn');
