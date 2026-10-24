@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/innerbloom", "destination": "https://innerbloom.mikeposner.com/", "permanent": true },
+    { "source": "/innerbloom/:path*", "destination": "https://innerbloom.mikeposner.com/:path*", "permanent": true }
+  ]
+}
